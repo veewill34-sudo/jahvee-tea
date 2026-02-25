@@ -15,10 +15,8 @@
       --sage:#86a98f;
       --herb:#4f7a62;
       --line:rgba(255,255,255,.10);
-      --soft:rgba(255,255,255,.06);
       --ink:#0a0d0b;
       --shadow: 0 18px 60px rgba(0,0,0,.35);
-      --radius: 22px;
     }
     *{box-sizing:border-box}
     body{
@@ -27,7 +25,6 @@
       background: var(--forest);
       color: var(--cream);
     }
-    a{color:inherit}
     .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
     header{
       position:sticky;top:0;z-index:50;
@@ -36,15 +33,13 @@
       border-bottom:1px solid var(--line);
     }
     .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
     .logoBox{
       width:44px;height:44px;border-radius:16px;
       border:1px solid var(--line);background:rgba(255,255,255,.05);
       display:grid;place-items:center;overflow:hidden;
     }
     .logoBox img{width:100%;height:100%;object-fit:contain}
-    .brandTitle{font-weight:800;letter-spacing:-.02em}
-    .brandTag{font-size:12px;opacity:.7;margin-top:2px}
     nav{display:flex;flex-wrap:wrap;gap:8px}
     .pillBtn{
       border:1px solid var(--line);
@@ -75,8 +70,7 @@
       padding:2px 8px;border-radius:999px;
       font-size:12px;
     }
-
-    main{padding:36px 0}
+    main{padding:36px 0; min-height: 65vh;}
     .titleRow{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
     h1{margin:0;font-size:34px;letter-spacing:-.02em}
     .sub{opacity:.72;max-width:760px;line-height:1.5;margin-top:10px}
@@ -125,8 +119,7 @@
     }
     .hr{height:1px;background:var(--line);margin:18px 0}
     .two{grid-template-columns:1.3fr .7fr}
-    .three{grid-template-columns:repeat(3,1fr)}
-    @media(max-width:900px){.two,.three{grid-template-columns:1fr}}
+    @media(max-width:900px){.two{grid-template-columns:1fr}}
     input,select,textarea{
       width:100%;
       background: rgba(0,0,0,.20);
@@ -167,20 +160,19 @@
     footer{border-top:1px solid var(--line);padding:28px 0;margin-top:24px}
     .footGrid{display:grid;gap:16px;grid-template-columns:1.2fr 1fr 1fr}
     @media(max-width:900px){.footGrid{grid-template-columns:1fr}}
-    pre{white-space:pre-wrap}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap topbar">
-      <a class="brand" href="#home" onclick="go('home')">
+      <a class="brand" href="#home" onclick="go('home'); return false;">
         <div class="logoBox">
-          <!-- Put your logo image in the repo as /logo.png -->
-          <img src="logo.png" alt="JahVee logo" onerror="this.style.display='none'; this.parentElement.textContent='logo'; this.parentElement.style.color='rgba(255,255,255,.55)'; this.parentElement.style.fontSize='12px';" />
+          <img src="logo.png" alt="JahVee logo"
+            onerror="this.style.display='none'; this.parentElement.textContent='logo'; this.parentElement.style.color='rgba(255,255,255,.55)'; this.parentElement.style.fontSize='12px';" />
         </div>
         <div>
-          <div class="brandTitle">JahVee’s <span style="font-weight:700;opacity:.75;font-size:14px;margin-left:8px">Herbal Tea</span></div>
-          <div class="brandTag">Beauty, Botanicals, & Beyond</div>
+          <div style="font-weight:900;letter-spacing:-.02em">JahVee’s <span style="font-weight:700;opacity:.75;font-size:14px;margin-left:8px">Herbal Tea</span></div>
+          <div style="font-size:12px;opacity:.7;margin-top:2px">Beauty, Botanicals, & Beyond</div>
         </div>
       </a>
 
@@ -241,78 +233,48 @@
   ];
 
   const BLENDS = [
-    {
-      id:"breath-release",
-      name:"Breath & Release",
-      category:"Breath & Lungs",
+    { id:"breath-release", name:"Breath & Release", category:"Breath & Lungs",
       notes:"Soft, clearing, and comforting — for open airways + gentle release.",
       ingredients:["Mullein Leaf","Marshmallow Root","Hyssop","Nettle leaf"],
-      caffeine:"Caffeine-free",
-      taste:"Herbal, smooth, lightly green",
+      caffeine:"Caffeine-free", taste:"Herbal, smooth, lightly green",
       ritual:"Inhale the steam for 3 slow breaths before your first sip.",
       affirmation:"I release what constricts me. I breathe in freedom.",
-      bestFor:["Seasonal shifts","Dry air days","Post-talking/working voice"]
     },
-    {
-      id:"glow-flow",
-      name:"Glow & Flow",
-      category:"Glow & Skin",
+    { id:"glow-flow", name:"Glow & Flow", category:"Glow & Skin",
       notes:"Radiant botanicals to support glow-from-within rituals.",
       ingredients:["Hibiscus","Nettle leaf","Dandelion leaf","Burdock root"],
-      caffeine:"Caffeine-free",
-      taste:"Bright, tangy, berry-floral",
+      caffeine:"Caffeine-free", taste:"Bright, tangy, berry-floral",
       ritual:"Sip while doing a 60-second face massage.",
       affirmation:"My body knows how to glow, cleanse, and renew.",
-      bestFor:["Glow routines","Post-workout hydration","Self-care nights"]
     },
-    {
-      id:"rooted-strength",
-      name:"Rooted Strength",
-      category:"Root & Ground",
+    { id:"rooted-strength", name:"Rooted Strength", category:"Root & Ground",
       notes:"Grounding roots + mineral-rich herbs for steady energy.",
       ingredients:["Burdock root","Ashwagandha root powder","Nettle leaf","Dandelion leaf"],
-      caffeine:"Caffeine-free",
-      taste:"Earthy, robust, lightly bitter",
+      caffeine:"Caffeine-free", taste:"Earthy, robust, lightly bitter",
       ritual:"Hold the warm cup at your heart for 10 seconds before sipping.",
       affirmation:"I am grounded. I am steady. I am supported.",
-      bestFor:["Busy seasons","Consistency goals","Morning grounding"]
     },
-    {
-      id:"moon-tea",
-      name:"Moon Tea",
-      category:"Moon & Mystic",
+    { id:"moon-tea", name:"Moon Tea", category:"Moon & Mystic",
       notes:"Dreamy, night-blooming botanicals for moonlit reflection.",
       ingredients:["Blue Lotus","Mugwort","Jasmine flower","Lavender"],
-      caffeine:"Caffeine-free",
-      taste:"Floral, mystical, soft lavender finish",
+      caffeine:"Caffeine-free", taste:"Floral, mystical, soft lavender finish",
       ritual:"Sip under dim light. Journal one sentence: “Tonight I release…”",
       affirmation:"I trust the timing of my life and the wisdom of my intuition.",
-      bestFor:["Night routines","Intuition work","Gentle unwinding"]
     },
-    {
-      id:"sacred-feminine",
-      name:"Sacred Feminine Blend",
-      category:"Feminine",
+    { id:"sacred-feminine", name:"Sacred Feminine Blend", category:"Feminine",
       notes:"A soft, supportive blend for cyclical harmony + self-devotion.",
       ingredients:["Rasbery leaf","Hibiscus","Jasmine flower","Nettle leaf"],
-      caffeine:"Caffeine-free",
-      taste:"Floral-tart, comforting",
+      caffeine:"Caffeine-free", taste:"Floral-tart, comforting",
       ritual:"Place one hand on belly, one on heart. Sip slowly for 7 breaths.",
       affirmation:"I honor my cycles. I nurture myself with devotion.",
-      bestFor:["Feminine wellness ritual","Rest + restore","Gentle nourishment"]
     },
-    {
-      id:"botanical-balance",
-      name:"Botanical Balance",
-      category:"Digest & Detox",
+    { id:"botanical-balance", name:"Botanical Balance", category:"Digest & Detox",
       notes:"A balanced, everyday blend to support gentle reset energy.",
       ingredients:["Dandelion leaf","Prunella","Nettle leaf","Burdock root"],
-      caffeine:"Caffeine-free",
-      taste:"Clean, green, lightly earthy",
+      caffeine:"Caffeine-free", taste:"Clean, green, lightly earthy",
       ritual:"Sip after meals and name 3 things you’re grateful for.",
       affirmation:"I choose balance. I support my body with love.",
-      bestFor:["Daily balance","After meals","Gentle wellness routine"]
-    }
+    },
   ];
 
   const ROUTES = [
@@ -331,38 +293,22 @@
   const $nav = document.getElementById("nav");
   const $count = document.getElementById("cartCount");
 
-  let route = "home";
-  let cart = []; // {id,name,sizeKey,unitPrice,qty}
+  let cart = [];
+  const state = { shopCat:"All", shopQ:"" };
 
   function money(n){ return `$${Number(n).toFixed(2)}`; }
-  function sizeLabel(k){ return (SIZES.find(s=>s.key===k)||{}).label||k; }
+  function escapeHtml(s){ return (s||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"); }
 
   function setCartCount(){
     const c = cart.reduce((a,i)=>a+i.qty,0);
     $count.textContent = c;
   }
 
-  function go(r){
-    route = r;
-    render();
-    window.scrollTo({top:0, behavior:"smooth"});
-  }
-
   function nav(){
+    const current = getRoute();
     $nav.innerHTML = ROUTES.map(([k,label]) => `
-      <button class="pillBtn ${route===k?'active':''}" onclick="go('${k}')">${label}</button>
+      <button class="pillBtn ${current===k?'active':''}" onclick="go('${k}')">${label}</button>
     `).join("");
-  }
-
-  function addToCart(productId, sizeKey){
-    const b = BLENDS.find(x=>x.id===productId);
-    const s = SIZES.find(x=>x.key===sizeKey);
-    if(!b || !s) return;
-    const idx = cart.findIndex(x=>x.id===productId && x.sizeKey===sizeKey);
-    if(idx>=0) cart[idx].qty += 1;
-    else cart.push({id:productId, name:b.name, sizeKey, unitPrice:s.price, qty:1});
-    setCartCount();
-    toast(`Added: ${b.name} • ${sizeLabel(sizeKey)}`);
   }
 
   function toast(msg){
@@ -375,7 +321,28 @@
     el.style.zIndex="999";
     el.textContent = msg;
     document.body.appendChild(el);
-    setTimeout(()=>{ el.remove(); }, 2200);
+    setTimeout(()=> el.remove(), 2200);
+  }
+
+  function addToCart(productId, sizeKey){
+    const b = BLENDS.find(x=>x.id===productId);
+    const s = SIZES.find(x=>x.key===sizeKey);
+    if(!b || !s) return;
+    const idx = cart.findIndex(x=>x.id===productId && x.sizeKey===sizeKey);
+    if(idx>=0) cart[idx].qty += 1;
+    else cart.push({id:productId, name:b.name, sizeKey, unitPrice:s.price, qty:1});
+    setCartCount();
+    toast(`Added: ${b.name} • ${s.label}`);
+  }
+
+  function go(r){
+    location.hash = "#" + r;
+  }
+
+  function getRoute(){
+    const h = (location.hash || "#home").replace("#","");
+    const valid = ROUTES.map(x=>x[0]).concat(["checkout"]);
+    return valid.includes(h) ? h : "home";
   }
 
   function Home(){
@@ -386,7 +353,7 @@
             <div style="font-weight:900;font-size:18px">${b.name}</div>
             <div style="opacity:.65;font-size:13px">${b.category}</div>
           </div>
-          <div class="gold">from ${money(SIZES.find(s=>s.key==='small').price)}</div>
+          <div class="gold">from ${money(14)}</div>
         </div>
         <div class="p">${b.notes}</div>
         <div class="chips">${b.ingredients.slice(0,3).map(i=>`<span class="chip">${i}</span>`).join("")}</div>
@@ -445,8 +412,7 @@
       </div>
     `;
   }
-
-  function signup(){
+  window.signup = function(){
     const v = (document.getElementById("signupEmail")||{}).value || "";
     if(!v.trim()) return;
     const msg = document.getElementById("signupMsg");
@@ -474,6 +440,9 @@
       </div>
     `;
   }
+
+  window.setCat = function(c){ state.shopCat=c; render(); }
+  window.setQ = function(q){ state.shopQ=q; render(); }
 
   function Shop(){
     const categories = ["All", ...Array.from(new Set(BLENDS.map(b=>b.category)))];
@@ -572,44 +541,13 @@
         </div>
       </div>
 
-      <div class="grid three" style="margin-top:16px">
+      <div class="grid" style="margin-top:16px">
         <div class="card">
-          <div class="mini">BREATH + COMFORT</div>
-          <div class="p">Mullein + marshmallow root are often used in soothing herbal routines.</div>
-          <div class="hr"></div>
-          <ul class="p" style="margin:0;padding-left:18px">
-            <li>Comfort rituals during seasonal shifts</li>
-            <li>Steam inhale + slow sipping</li>
-            <li>Gentle, caffeine-free support</li>
-          </ul>
+          <div class="mini">INGREDIENT INVENTORY (YOUR REAL HERBS)</div>
+          <div class="p">Use this list for custom blends and future product drops:</div>
+          <div class="chips">${INVENTORY.map(h=>`<span class="chip">${h}</span>`).join("")}</div>
+          <div style="opacity:.5;font-size:12px;margin-top:10px">* Wellness/ritual-focused and not medical advice.</div>
         </div>
-        <div class="card">
-          <div class="mini">GLOW + BALANCE</div>
-          <div class="p">Hibiscus + mineral-rich greens are popular for glow-from-within routines.</div>
-          <div class="hr"></div>
-          <ul class="p" style="margin:0;padding-left:18px">
-            <li>Hydration-friendly ritual</li>
-            <li>Bright, tart flavor profiles</li>
-            <li>Daily reset energy</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="mini">MOON + CALM</div>
-          <div class="p">Lavender + blue lotus vibes for evening softness and reflection.</div>
-          <div class="hr"></div>
-          <ul class="p" style="margin:0;padding-left:18px">
-            <li>Wind-down routines</li>
-            <li>Journaling + intention setting</li>
-            <li>Dreamy, floral profiles</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:16px">
-        <div class="mini">INGREDIENT INVENTORY (YOUR REAL HERBS)</div>
-        <div class="p">Use this list for custom blends and future product drops:</div>
-        <div class="chips">${INVENTORY.map(h=>`<span class="chip">${h}</span>`).join("")}</div>
-        <div style="opacity:.5;font-size:12px;margin-top:10px">* Wellness/ritual-focused and not medical advice.</div>
       </div>
     `;
   }
@@ -629,28 +567,6 @@
           <div class="h2">Beauty, Botanicals, & Beyond — brewed with intention</div>
           <div class="p">JahVee’s Herbal Tea is a soft place to land — where herbs meet ritual, and every cup becomes a moment of self-return. This brand was born from real life transitions: seasons of starting over, learning new skills, and choosing a future that feels aligned.</div>
           <div class="p">Here, we blend with purpose: comfort for the breath, glow for the spirit, grounding for the body, and moonlight for the mind. It’s not just tea — it’s a practice: sip, breathe, affirm, and keep walking toward your next level.</div>
-
-          <div class="hr"></div>
-          <div class="grid two">
-            <div class="cardSoft">
-              <div style="font-weight:900">Brand pillars</div>
-              <ul class="p" style="margin:10px 0 0;padding-left:18px">
-                <li>Soft herbal vibe + clean modern design</li>
-                <li>Gold/amber intention + earthy tones</li>
-                <li>Ritual + affirmation with every blend</li>
-                <li>Custom blending from your inventory list</li>
-              </ul>
-            </div>
-            <div class="cardSoft">
-              <div style="font-weight:900">What’s next</div>
-              <ul class="p" style="margin:10px 0 0;padding-left:18px">
-                <li>Seasonal limited editions</li>
-                <li>Consultations + readings</li>
-                <li>Build-your-own blend experiences</li>
-                <li>Print-ready label kits</li>
-              </ul>
-            </div>
-          </div>
         </div>
 
         <div class="card">
@@ -670,36 +586,284 @@
       <div class="titleRow">
         <div>
           <h1>Booking</h1>
-          <div class="sub">Book a Tea Consultation, a Reading, or a Custom Blend Session. Form submits + confirms.</div>
+          <div class="sub">Booking request form (UI confirmation). Later you can connect Calendly.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="mini">REQUEST A BOOKING</div>
+        <div class="grid" style="margin-top:12px;gap:10px;max-width:560px">
+          <label class="p" style="margin:0">Service
+            <select id="bkType">
+              <option>Tea Consultation</option>
+              <option>Tea + Intuition Reading</option>
+              <option>Custom Blend Session</option>
+            </select>
+          </label>
+          <label class="p" style="margin:0">Name <input id="bkName" placeholder="Your name"></label>
+          <label class="p" style="margin:0">Email <input id="bkEmail" placeholder="you@email.com"></label>
+          <label class="p" style="margin:0">Notes <textarea id="bkNotes" placeholder="Tell me what you need support with…"></textarea></label>
+          <button class="btn" onclick="book()">Submit request</button>
+          <div id="bkMsg"></div>
+        </div>
+      </div>
+    `;
+  }
+  window.book = function(){
+    const n = (document.getElementById("bkName")||{}).value || "";
+    const e = (document.getElementById("bkEmail")||{}).value || "";
+    if(!n.trim() || !e.trim()) return;
+    document.getElementById("bkMsg").innerHTML = `<div class="notice">Booking request received ✨ You’ll get an email to confirm your time.</div>`;
+    document.getElementById("bkName").value = "";
+    document.getElementById("bkEmail").value = "";
+    document.getElementById("bkNotes").value = "";
+  }
+
+  function Labels(){
+    const options = BLENDS.map(b=>`<option value="${b.id}">${b.name}</option>`).join("");
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Product Labels</h1>
+          <div class="sub">Pick a blend to generate print-ready label text.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <label class="p" style="margin:0">Select a blend
+          <select id="labelBlend" onchange="renderLabel()">${options}</select>
+        </label>
+        <div class="hr"></div>
+        <div class="mini">COPY / PASTE LABEL TEXT</div>
+        <pre id="labelText" class="p" style="margin-top:10px"></pre>
+      </div>
+    `;
+  }
+
+  window.renderLabel = function(){
+    const id = (document.getElementById("labelBlend")||{}).value || BLENDS[0].id;
+    const b = BLENDS.find(x=>x.id===id) || BLENDS[0];
+    const text = [
+      `BRAND: JahVee’s — Beauty, Botanicals, & Beyond`,
+      `PRODUCT: ${b.name}`,
+      `CATEGORY: ${b.category}`,
+      `INGREDIENTS: ${b.ingredients.join(", ")}`,
+      `TASTE NOTES: ${b.taste}`,
+      `RITUAL: ${b.ritual}`,
+      `AFFIRMATION: "${b.affirmation}"`,
+      `STEEPING: 1 tbsp per 8–10 oz • 205°F • 8–12 min • Cover while steeping`,
+      `NET WT: (choose size)`,
+      `CAFFEINE: ${b.caffeine}`,
+      `NOTE: Wellness ritual tea. Not intended to diagnose, treat, cure, or prevent any disease.`,
+    ].join("\n");
+    document.getElementById("labelText").textContent = text;
+  }
+
+  function Build(){
+    const herbBtns = INVENTORY.map(h=>`
+      <button class="pillBtn" onclick="toggleHerb('${h.replaceAll("'","\\'")}')">${h}</button>
+    `).join("");
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Build Your Own Blend</h1>
+          <div class="sub">Select your herbs, submit the form, and get a confirmation message.</div>
         </div>
       </div>
 
       <div class="grid two" style="margin-top:16px">
         <div class="card">
-          <div class="mini">SERVICES</div>
-          ${[
-            ["Tea Consultation (30 min)","$35","Blend guidance + routine suggestions using your herbal inventory."],
-            ["Tea + Intuition Reading (45 min)","$55","A grounded reading + tea ritual guidance for your next steps."],
-            ["Custom Blend Session (60 min)","$75","We co-create your personal blend + label text + steeping ritual."]
-          ].map(([t,p,d])=>`
-            <div class="cardSoft" style="margin-top:12px">
-              <div style="display:flex;justify-content:space-between;gap:10px">
-                <div style="font-weight:900">${t}</div>
-                <div class="gold">${p}</div>
-              </div>
-              <div class="p" style="margin-top:6px">${d}</div>
-            </div>
-          `).join("")}
+          <div class="mini">YOUR HERB INVENTORY</div>
+          <div class="p">Click herbs to add them to your custom blend:</div>
+          <div class="chips">${herbBtns}</div>
+
+          <div class="hr"></div>
+          <div class="mini">SELECTED HERBS</div>
+          <div id="selectedHerbs" class="p">None selected yet.</div>
         </div>
 
         <div class="card">
-          <div class="mini">REQUEST A BOOKING</div>
+          <div class="mini">CUSTOM BLEND REQUEST</div>
           <div class="grid" style="margin-top:12px;gap:10px">
-            <label class="p" style="margin:0">Service
-              <select id="bkType">
-                <option>Tea Consultation</option>
-                <option>Tea + Intuition Reading</option>
-                <option>Custom Blend Session</option>
-              </select>
-            </label>
-            <label
+            <label class="p" style="margin:0">Name <input id="byoName" placeholder="Your name"></label>
+            <label class="p" style="margin:0">Email <input id="byoEmail" placeholder="you@email.com"></label>
+            <label class="p" style="margin:0">Intention <input id="byoIntent" placeholder="calm nights, glow routine, grounding mornings…"></label>
+            <label class="p" style="margin:0">Notes <textarea id="byoNotes" placeholder="Avoid list, flavors, goals…"></textarea></label>
+            <button class="btn" onclick="submitBYO()">Submit custom blend request</button>
+            <div id="byoMsg"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  let selected = [];
+  window.toggleHerb = function(h){
+    if(selected.includes(h)) selected = selected.filter(x=>x!==h);
+    else selected = [...selected, h];
+    const el = document.getElementById("selectedHerbs");
+    if(el) el.textContent = selected.length ? selected.join(", ") : "None selected yet.";
+  }
+
+  window.submitBYO = function(){
+    const n = (document.getElementById("byoName")||{}).value || "";
+    const e = (document.getElementById("byoEmail")||{}).value || "";
+    if(!n.trim() || !e.trim() || selected.length===0) return;
+    document.getElementById("byoMsg").innerHTML = `<div class="notice">Submitted ✨ We received your custom blend request. You’ll get a confirmation email soon.</div>`;
+    document.getElementById("byoName").value = "";
+    document.getElementById("byoEmail").value = "";
+    document.getElementById("byoIntent").value = "";
+    document.getElementById("byoNotes").value = "";
+    selected = [];
+    const el = document.getElementById("selectedHerbs");
+    if(el) el.textContent = "None selected yet.";
+  }
+
+  function Contact(){
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Contact + Social</h1>
+          <div class="sub">Simple message form + your socials.</div>
+        </div>
+      </div>
+
+      <div class="grid two" style="margin-top:16px">
+        <div class="card">
+          <div class="mini">SEND A MESSAGE</div>
+          <div class="grid" style="margin-top:12px;gap:10px">
+            <label class="p" style="margin:0">Name <input id="cName" placeholder="Your name"></label>
+            <label class="p" style="margin:0">Email <input id="cEmail" placeholder="you@email.com"></label>
+            <label class="p" style="margin:0">Message <textarea id="cMsg" placeholder="Tell me what you’re looking for…"></textarea></label>
+            <button class="btn" onclick="sendMsg()">Send message</button>
+            <div id="cDone"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="mini">SOCIAL + EMAIL</div>
+          <div class="p" style="margin-top:12px">Instagram / TikTok: <b>@JahVee</b></div>
+          <div class="p">Email: <b>hello@jahvee.com</b></div>
+        </div>
+      </div>
+    `;
+  }
+
+  window.sendMsg = function(){
+    const n = (document.getElementById("cName")||{}).value||"";
+    const e = (document.getElementById("cEmail")||{}).value||"";
+    const m = (document.getElementById("cMsg")||{}).value||"";
+    if(!n.trim()||!e.trim()||!m.trim()) return;
+    document.getElementById("cDone").innerHTML = `<div class="notice">Message sent ✨ We’ll reply soon.</div>`;
+    document.getElementById("cName").value = "";
+    document.getElementById("cEmail").value = "";
+    document.getElementById("cMsg").value = "";
+  }
+
+  function Checkout(){
+    const subtotal = cart.reduce((sum, it)=> sum + it.unitPrice*it.qty, 0);
+    const shipping = cart.length ? 6.50 : 0;
+    const total = subtotal + shipping;
+
+    const items = cart.length ? cart.map((it, idx)=>`
+      <div class="cardSoft" style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+        <div>
+          <div style="font-weight:900">${it.name}</div>
+          <div style="opacity:.65;font-size:13px">${SIZES.find(s=>s.key===it.sizeKey).label} • ${money(it.unitPrice)}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button class="pillBtn" onclick="qty(${idx},-1)">–</button>
+          <div style="min-width:26px;text-align:center">${it.qty}</div>
+          <button class="pillBtn" onclick="qty(${idx},1)">+</button>
+          <div class="gold" style="min-width:86px;text-align:right">${money(it.unitPrice*it.qty)}</div>
+          <button class="pillBtn" onclick="rm(${idx})">Remove</button>
+        </div>
+      </div>
+    `).join("") : `<div class="p">Your cart is empty. Add a blend from the Shop page.</div>`;
+
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Cart + Checkout</h1>
+          <div class="sub">Checkout-ready layout. Connect Stripe/Square later.</div>
+        </div>
+        <button class="btnGhost" onclick="go('shop')">Continue shopping</button>
+      </div>
+
+      <div class="grid two" style="margin-top:16px">
+        <div class="card">
+          <div class="mini">YOUR ITEMS</div>
+          <div class="grid" style="margin-top:12px;gap:10px">${items}</div>
+        </div>
+
+        <div class="card">
+          <div class="mini">ORDER SUMMARY</div>
+          <div class="p" style="display:flex;justify-content:space-between"><span>Subtotal</span><b>${money(subtotal)}</b></div>
+          <div class="p" style="display:flex;justify-content:space-between"><span>Shipping</span><b>${money(shipping)}</b></div>
+          <div class="hr"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:900">Total</div>
+            <div class="gold" style="font-size:18px">${money(total)}</div>
+          </div>
+
+          <div class="hr"></div>
+          <div class="mini">CHECKOUT (SIMULATED)</div>
+          <div class="row" style="margin-top:10px">
+            <input id="coEmail" placeholder="you@email.com" />
+            <button class="btn" onclick="placeOrder()">Place order</button>
+          </div>
+          <div id="coMsg"></div>
+          <div style="opacity:.5;font-size:12px;margin-top:10px">Next step: replace Place order with Stripe Checkout / Square payment links.</div>
+        </div>
+      </div>
+    `;
+  }
+
+  window.qty = function(i, d){
+    cart[i].qty = Math.max(1, cart[i].qty + d);
+    render();
+  }
+  window.rm = function(i){
+    cart = cart.filter((_,idx)=> idx!==i);
+    setCartCount();
+    render();
+  }
+  window.placeOrder = function(){
+    const e = (document.getElementById("coEmail")||{}).value||"";
+    if(!e.trim() || cart.length===0) return;
+    document.getElementById("coMsg").innerHTML = `<div class="notice">Order confirmed ✨ Thank you for shopping JahVee’s.</div>`;
+    cart = [];
+    setCartCount();
+    render();
+  }
+
+  function render(){
+    nav();
+    const r = getRoute();
+    if(r==="home") $page.innerHTML = Home();
+    else if(r==="shop") $page.innerHTML = Shop();
+    else if(r==="menu") $page.innerHTML = Menu();
+    else if(r==="benefits") $page.innerHTML = Benefits();
+    else if(r==="about") $page.innerHTML = About();
+    else if(r==="booking") $page.innerHTML = Booking();
+    else if(r==="labels") { $page.innerHTML = Labels(); setTimeout(()=>renderLabel(),0); }
+    else if(r==="build") $page.innerHTML = Build();
+    else if(r==="contact") $page.innerHTML = Contact();
+    else if(r==="checkout") $page.innerHTML = Checkout();
+    else $page.innerHTML = Home();
+
+    // always scroll to top when navigating
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  window.addToCart = addToCart;
+  window.go = go;
+
+  window.addEventListener("hashchange", render);
+  // Force starting route
+  if(!location.hash) location.hash = "#home";
+  render();
+  setCartCount();
+</script>
+</body>
+</html>
