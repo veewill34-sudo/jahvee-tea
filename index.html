@@ -6,22 +6,23 @@
   <title>JahVee’s Herbal Tea — Beauty, Botanicals, & Beyond</title>
   <style>
     :root{
-  /* Light “logo-matching” palette */
-  --bg:#fbf4e8;          /* warm cream background */
-  --surface:#f6efe1;     /* section surface */
-  --card:#ffffff;        /* card background */
-  --card2:#f1f6f1;       /* soft herbal card tint */
-  --text:#1b2a22;        /* deep herbal text */
-  --muted:rgba(27,42,34,.72);
+      /* Light “logo-matching” palette */
+      --bg:#fbf4e8;          /* warm cream */
+      --surface:#f6efe1;     /* section surface */
+      --card:#ffffff;        /* pure white cards */
+      --card2:#f1f6f1;       /* soft herbal tint for inner cards */
+      --text:#111111;        /* true black for readability */
+      --muted:rgba(17,17,17,.72);
 
-  --amber:#d6a24a;       /* logo gold */
-  --gold:#f1c86a;        /* soft gold highlight */
-  --sage:#7fa88d;        /* herbal sage */
-  --herb:#3f6f58;        /* deeper green accent */
+      --amber:#d6a24a;       /* logo gold */
+      --gold:#f1c86a;        /* highlight gold */
+      --sage:#7fa88d;        /* sage */
+      --herb:#3f6f58;        /* herb green */
 
-  --line:rgba(27,42,34,.12);
-  --shadow: 0 18px 60px rgba(20,30,25,.12);
-}
+      --line:rgba(17,17,17,.14);
+      --shadow: 0 18px 60px rgba(20,30,25,.12);
+    }
+
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -29,39 +30,45 @@
       background: var(--bg);
       color: var(--text);
     }
+
     .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+
     header{
       position:sticky;top:0;z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(251,244,232,.86);
+      background: rgba(251,244,232,.90);
       border-bottom:1px solid var(--line);
     }
+
     .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
     .logoBox{
       width:44px;height:44px;border-radius:16px;
-      border:1px solid var(--line);background:rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.85);
       display:grid;place-items:center;overflow:hidden;
     }
     .logoBox img{width:100%;height:100%;object-fit:contain}
+
     nav{display:flex;flex-wrap:wrap;gap:8px}
     .pillBtn{
       border:1px solid var(--line);
-      background: rgba(214,164,74,.10);
-      color: rgba(27,42,34,.85);
+      background: rgba(255,255,255,.78);
+      color: rgba(17,17,17,.88);
       padding:8px 12px;border-radius:999px;
       font-size:13px;cursor:pointer;
     }
-    .pillBtn:hover{background:rgba(255,255,255,.08)}
+    .pillBtn:hover{background:rgba(214,162,74,.10)}
     .pillBtn.active{
-      border-color: rgba(241,200,106,.35);
-      background: rgba(214,162,74,.14);
-      color: var(--cream);
+      border-color: rgba(214,162,74,.55);
+      background: rgba(214,162,74,.22);
+      color: var(--text);
     }
+
     .cartBtn{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      color: var(--cream);
+      background: rgba(255,255,255,.78);
+      color: var(--text);
       padding:10px 12px;border-radius:16px;
       cursor:pointer;
       display:flex;align-items:center;gap:8px;
@@ -69,34 +76,40 @@
     }
     .badge{
       background: var(--amber);
-      color: var(--ink);
-      font-weight:800;
+      color: #111;
+      font-weight:900;
       padding:2px 8px;border-radius:999px;
       font-size:12px;
     }
+
     main{padding:36px 0; min-height: 65vh;}
+
     .titleRow{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    h1{margin:0;font-size:34px;letter-spacing:-.02em}
-    .sub{opacity:.72;max-width:760px;line-height:1.5;margin-top:10px}
+    h1{margin:0;font-size:34px;letter-spacing:-.02em;color:var(--text)}
+    .sub{opacity:.85;max-width:760px;line-height:1.5;margin-top:10px;color:var(--muted)}
+
     .btn{
       background: var(--amber);
-      color: var(--ink);
+      color: #111;
       font-weight:900;
       border:0;
       padding:10px 14px;border-radius:16px;
       cursor:pointer;
     }
     .btn:hover{filter:brightness(1.05)}
+
     .btnGhost{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      color: var(--cream);
+      background: rgba(255,255,255,.78);
+      color: var(--text);
       padding:10px 14px;border-radius:16px;
       cursor:pointer;
-      font-weight:800;
+      font-weight:900;
     }
-    .btnGhost:hover{background:rgba(255,255,255,.08)}
+    .btnGhost:hover{background:rgba(214,162,74,.10)}
+
     .grid{display:grid;gap:16px}
+
     .card{
       background: var(--card);
       border:1px solid var(--line);
@@ -110,109 +123,91 @@
       border-radius:24px;
       padding:14px;
     }
-    .mini{font-size:12px;color:rgba(255,255,255,.65);font-weight:800}
-    .h2{font-size:20px;font-weight:900;margin:10px 0 0}
+
+    .mini{font-size:12px;color:rgba(17,17,17,.70);font-weight:900}
+    .h2{font-size:20px;font-weight:900;margin:10px 0 0;color:var(--text)}
     .p{color:var(--muted);font-size:14px;line-height:1.5;margin-top:10px}
+
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
     .chip{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      color:rgba(255,255,255,.72);
+      border:1px solid rgba(17,17,17,.14);
+      background: rgba(214,162,74,.10);
+      color: rgba(17,17,17,.88);
       padding:6px 10px;border-radius:999px;
       font-size:12px;
+      font-weight:700;
     }
+
     .hr{height:1px;background:var(--line);margin:18px 0}
+
     .two{grid-template-columns:1.3fr .7fr}
     @media(max-width:900px){.two{grid-template-columns:1fr}}
+
     input,select,textarea{
       width:100%;
-      background: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.92);
       color: var(--text);
-      border:1px solid var(--line);
+      border:1px solid rgba(17,17,17,.16);
       border-radius:16px;
       padding:10px 12px;
       outline:none;
       font-size:14px;
     }
     textarea{min-height:110px;resize:vertical}
-    input:focus,select:focus,textarea:focus{border-color: rgba(241,200,106,.35)}
+    input:focus,select:focus,textarea:focus{border-color: rgba(214,162,74,.60)}
+
     .row{display:flex;gap:10px;flex-wrap:wrap}
     .row > *{flex:1}
+
     .notice{
-      border:1px solid rgba(134,169,143,.30);
-      background: rgba(79,122,98,.15);
+      border:1px solid rgba(127,168,141,.40);
+      background: rgba(127,168,141,.18);
       padding:12px;border-radius:16px;
       font-size:14px;
       margin-top:12px;
+      color: var(--text);
+      font-weight:700;
     }
+
     .products{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
     @media(max-width:980px){.products{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:640px){.products{grid-template-columns:1fr}}
+
     .priceRow{display:grid;gap:8px;margin-top:12px}
     .sizeBtn{
       display:flex;align-items:center;justify-content:space-between;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.20);
+      border:1px solid rgba(17,17,17,.16);
+      background: rgba(255,255,255,.92);
       border-radius:16px;
       padding:10px 12px;
       cursor:pointer;
-      color: var(--cream);
+      color: var(--text);
       font-size:14px;
+      font-weight:800;
     }
-    .sizeBtn:hover{background:rgba(255,255,255,.08)}
-    .gold{color:var(--gold);font-weight:900}
-    footer{border-top:1px solid var(--line);padding:28px 0;margin-top:24px}
+    .sizeBtn:hover{background:rgba(214,162,74,.10)}
+
+    .gold{color:var(--amber);font-weight:900}
+
+    footer{border-top:1px solid var(--line);padding:28px 0;margin-top:24px;background:rgba(246,239,225,.60)}
     .footGrid{display:grid;gap:16px;grid-template-columns:1.2fr 1fr 1fr}
     @media(max-width:900px){.footGrid{grid-template-columns:1fr}}
-    /* --- Readability Fix Pack (light theme) --- */
-h1, h2, h3, .h2 { color: var(--text) !important; }
-.brand, .brand * { color: var(--text) !important; }
 
-.mini { color: rgba(27,42,34,.70) !important; }
-.sub, .p { color: rgba(27,42,34,.78) !important; }
-
-.chip{
-  color: rgba(27,42,34,.85) !important;
-  background: rgba(214,162,74,.10) !important;  /* soft gold */
-  border-color: rgba(27,42,34,.14) !important;
-}
-
-.pillBtn{
-  color: rgba(27,42,34,.90) !important;
-  background: rgba(255,255,255,.65) !important;
-  border-color: rgba(27,42,34,.14) !important;
-}
-
-.pillBtn.active{
-  color: var(--text) !important;
-  background: rgba(214,162,74,.22) !important;
-  border-color: rgba(214,162,74,.45) !important;
-}
-
-.sizeBtn{
-  color: var(--text) !important;
-  background: rgba(255,255,255,.85) !important;
-  border-color: rgba(27,42,34,.14) !important;
-}
-
-.cartBtn{
-  color: var(--text) !important;
-  background: rgba(255,255,255,.75) !important;
-  border-color: rgba(27,42,34,.14) !important;
-}
+    pre{white-space:pre-wrap;color:var(--text)}
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap topbar">
       <a class="brand" href="#home" onclick="go('home'); return false;">
         <div class="logoBox">
           <img src="logo.png" alt="JahVee logo"
-            onerror="this.style.display='none'; this.parentElement.textContent='logo'; this.parentElement.style.color='rgba(255,255,255,.55)'; this.parentElement.style.fontSize='12px';" />
+            onerror="this.style.display='none'; this.parentElement.textContent='logo'; this.parentElement.style.color='rgba(17,17,17,.55)'; this.parentElement.style.fontSize='12px';" />
         </div>
         <div>
           <div style="font-weight:900;letter-spacing:-.02em">JahVee’s <span style="font-weight:700;opacity:.75;font-size:14px;margin-left:8px">Herbal Tea</span></div>
-          <div style="font-size:12px;opacity:.7;margin-top:2px">Beauty, Botanicals, & Beyond</div>
+          <div style="font-size:12px;opacity:.75;margin-top:2px">Beauty, Botanicals, & Beyond</div>
         </div>
       </a>
 
@@ -231,12 +226,12 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
   <footer>
     <div class="wrap footGrid">
       <div>
-        <div style="font-weight:900;font-size:18px">JahVee’s</div>
-        <div style="opacity:.65;font-size:13px;margin-top:2px">Beauty, Botanicals, & Beyond</div>
+        <div style="font-weight:900;font-size:18px;color:var(--text)">JahVee’s</div>
+        <div style="opacity:.75;font-size:13px;margin-top:2px;color:var(--text)">Beauty, Botanicals, & Beyond</div>
         <div class="p" style="margin-top:10px">Soft herbal rituals, golden intention, and custom blends made from your real inventory.</div>
       </div>
       <div>
-        <div style="font-weight:900">Explore</div>
+        <div style="font-weight:900;color:var(--text)">Explore</div>
         <div class="chips" style="margin-top:10px">
           <button class="pillBtn" onclick="go('shop')">Shop</button>
           <button class="pillBtn" onclick="go('menu')">Tea Menu</button>
@@ -247,10 +242,10 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
         </div>
       </div>
       <div>
-        <div style="font-weight:900">Stay connected</div>
+        <div style="font-weight:900;color:var(--text)">Stay connected</div>
         <div class="p" style="margin-top:10px">Instagram / TikTok: <span style="opacity:.92">@JahVee</span></div>
         <div class="p" style="margin-top:6px">Email: <span style="opacity:.92">hello@jahvee.com</span></div>
-        <div style="opacity:.5;font-size:12px;margin-top:10px">© <span id="year"></span> JahVee’s</div>
+        <div style="opacity:.65;font-size:12px;margin-top:10px;color:var(--text)">© <span id="year"></span> JahVee’s</div>
       </div>
     </div>
   </footer>
@@ -335,6 +330,7 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
 
   let cart = [];
   const state = { shopCat:"All", shopQ:"" };
+  let selected = [];
 
   function money(n){ return `$${Number(n).toFixed(2)}`; }
   function escapeHtml(s){ return (s||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"); }
@@ -390,8 +386,8 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
       <div class="cardSoft">
         <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
           <div>
-            <div style="font-weight:900;font-size:18px">${b.name}</div>
-            <div style="opacity:.65;font-size:13px">${b.category}</div>
+            <div style="font-weight:900;font-size:18px;color:var(--text)">${b.name}</div>
+            <div style="opacity:.75;font-size:13px;color:var(--text)">${b.category}</div>
           </div>
           <div class="gold">from ${money(14)}</div>
         </div>
@@ -468,7 +464,7 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
       ["Moonlight Wind-Down","Dim the lights, sip slowly, journal one sentence of truth."]
     ].map(([t,txt])=>`
       <div class="cardSoft">
-        <div style="font-weight:900">${t}</div>
+        <div style="font-weight:900;color:var(--text)">${t}</div>
         <div class="p" style="margin-top:6px">${txt}</div>
       </div>
     `).join("");
@@ -501,10 +497,10 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
       <div class="cardSoft">
         <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
           <div>
-            <div style="font-weight:900;font-size:18px">${b.name}</div>
-            <div style="opacity:.65;font-size:13px">${b.category}</div>
+            <div style="font-weight:900;font-size:18px;color:var(--text)">${b.name}</div>
+            <div style="opacity:.75;font-size:13px;color:var(--text)">${b.category}</div>
           </div>
-          <div style="opacity:.7;font-size:12px;font-weight:900">${b.caffeine}</div>
+          <div style="opacity:.75;font-size:12px;font-weight:900;color:var(--text)">${b.caffeine}</div>
         </div>
         <div class="p">${b.notes}</div>
         <div class="chips">${b.ingredients.slice(0,4).map(i=>`<span class="chip">${i}</span>`).join("")}</div>
@@ -547,8 +543,8 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
       <div class="card">
         <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
           <div>
-            <div style="font-weight:900;font-size:20px">${b.name}</div>
-            <div style="opacity:.65;font-size:13px">${b.category}</div>
+            <div style="font-weight:900;font-size:20px;color:var(--text)">${b.name}</div>
+            <div style="opacity:.75;font-size:13px;color:var(--text)">${b.category}</div>
           </div>
           <div class="gold">${money(14)} • ${money(24)}</div>
         </div>
@@ -557,7 +553,7 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
           <span class="chip">${b.taste}</span>
           <span class="chip">${b.caffeine}</span>
         </div>
-        <div class="p"><b style="color:var(--cream)">Ingredients:</b> ${b.ingredients.join(", ")}</div>
+        <div class="p"><b style="color:var(--text)">Ingredients:</b> ${b.ingredients.join(", ")}</div>
       </div>
     `).join("");
 
@@ -586,7 +582,7 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
           <div class="mini">INGREDIENT INVENTORY (YOUR REAL HERBS)</div>
           <div class="p">Use this list for custom blends and future product drops:</div>
           <div class="chips">${INVENTORY.map(h=>`<span class="chip">${h}</span>`).join("")}</div>
-          <div style="opacity:.5;font-size:12px;margin-top:10px">* Wellness/ritual-focused and not medical advice.</div>
+          <div style="opacity:.75;font-size:12px;margin-top:10px;color:var(--text)">* Wellness/ritual-focused and not medical advice.</div>
         </div>
       </div>
     `;
@@ -612,9 +608,9 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
         <div class="card">
           <div class="mini">QUICK FACTS</div>
           <div class="grid" style="margin-top:12px;gap:10px">
-            <div class="cardSoft"><b>Signature vibe</b><div class="p" style="margin-top:6px">Gold glow + herbal calm</div></div>
-            <div class="cardSoft"><b>Customization</b><div class="p" style="margin-top:6px">Custom blends from your inventory list</div></div>
-            <div class="cardSoft"><b>Experience</b><div class="p" style="margin-top:6px">Ritual + affirmation with each cup</div></div>
+            <div class="cardSoft"><b style="color:var(--text)">Signature vibe</b><div class="p" style="margin-top:6px">Gold glow + herbal calm</div></div>
+            <div class="cardSoft"><b style="color:var(--text)">Customization</b><div class="p" style="margin-top:6px">Custom blends from your inventory list</div></div>
+            <div class="cardSoft"><b style="color:var(--text)">Experience</b><div class="p" style="margin-top:6px">Ritual + affirmation with each cup</div></div>
           </div>
         </div>
       </div>
@@ -737,7 +733,6 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
     `;
   }
 
-  let selected = [];
   window.toggleHerb = function(h){
     if(selected.includes(h)) selected = selected.filter(x=>x!==h);
     else selected = [...selected, h];
@@ -749,7 +744,7 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
     const n = (document.getElementById("byoName")||{}).value || "";
     const e = (document.getElementById("byoEmail")||{}).value || "";
     if(!n.trim() || !e.trim() || selected.length===0) return;
-    document.getElementById("byoMsg").innerHTML = `<div class="notice">Submitted ✨ We received your custom blend request. You’ll get a confirmation email soon.</div>`;
+    document.getElementById("byoMsg").innerHTML = `<div class="notice">Submitted ✨ We received your custom blend request.</div>`;
     document.getElementById("byoName").value = "";
     document.getElementById("byoEmail").value = "";
     document.getElementById("byoIntent").value = "";
@@ -808,12 +803,12 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
     const items = cart.length ? cart.map((it, idx)=>`
       <div class="cardSoft" style="display:flex;justify-content:space-between;gap:12px;align-items:center">
         <div>
-          <div style="font-weight:900">${it.name}</div>
-          <div style="opacity:.65;font-size:13px">${SIZES.find(s=>s.key===it.sizeKey).label} • ${money(it.unitPrice)}</div>
+          <div style="font-weight:900;color:var(--text)">${it.name}</div>
+          <div style="opacity:.75;font-size:13px;color:var(--text)">${SIZES.find(s=>s.key===it.sizeKey).label} • ${money(it.unitPrice)}</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px">
           <button class="pillBtn" onclick="qty(${idx},-1)">–</button>
-          <div style="min-width:26px;text-align:center">${it.qty}</div>
+          <div style="min-width:26px;text-align:center;color:var(--text);font-weight:900">${it.qty}</div>
           <button class="pillBtn" onclick="qty(${idx},1)">+</button>
           <div class="gold" style="min-width:86px;text-align:right">${money(it.unitPrice*it.qty)}</div>
           <button class="pillBtn" onclick="rm(${idx})">Remove</button>
@@ -838,11 +833,11 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
 
         <div class="card">
           <div class="mini">ORDER SUMMARY</div>
-          <div class="p" style="display:flex;justify-content:space-between"><span>Subtotal</span><b>${money(subtotal)}</b></div>
-          <div class="p" style="display:flex;justify-content:space-between"><span>Shipping</span><b>${money(shipping)}</b></div>
+          <div class="p" style="display:flex;justify-content:space-between"><span>Subtotal</span><b style="color:var(--text)">${money(subtotal)}</b></div>
+          <div class="p" style="display:flex;justify-content:space-between"><span>Shipping</span><b style="color:var(--text)">${money(shipping)}</b></div>
           <div class="hr"></div>
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <div style="font-weight:900">Total</div>
+            <div style="font-weight:900;color:var(--text)">Total</div>
             <div class="gold" style="font-size:18px">${money(total)}</div>
           </div>
 
@@ -853,7 +848,7 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
             <button class="btn" onclick="placeOrder()">Place order</button>
           </div>
           <div id="coMsg"></div>
-          <div style="opacity:.5;font-size:12px;margin-top:10px">Next step: replace Place order with Stripe Checkout / Square payment links.</div>
+          <div style="opacity:.75;font-size:12px;margin-top:10px;color:var(--text)">Next step: replace Place order with Stripe Checkout / Square payment links.</div>
         </div>
       </div>
     `;
@@ -892,7 +887,6 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
     else if(r==="checkout") $page.innerHTML = Checkout();
     else $page.innerHTML = Home();
 
-    // always scroll to top when navigating
     window.scrollTo({top:0, behavior:"smooth"});
   }
 
@@ -900,7 +894,6 @@ h1, h2, h3, .h2 { color: var(--text) !important; }
   window.go = go;
 
   window.addEventListener("hashchange", render);
-  // Force starting route
   if(!location.hash) location.hash = "#home";
   render();
   setCartCount();
