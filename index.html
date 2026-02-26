@@ -164,6 +164,42 @@
     footer{border-top:1px solid var(--line);padding:28px 0;margin-top:24px}
     .footGrid{display:grid;gap:16px;grid-template-columns:1.2fr 1fr 1fr}
     @media(max-width:900px){.footGrid{grid-template-columns:1fr}}
+    /* --- Readability Fix Pack (light theme) --- */
+h1, h2, h3, .h2 { color: var(--text) !important; }
+.brand, .brand * { color: var(--text) !important; }
+
+.mini { color: rgba(27,42,34,.70) !important; }
+.sub, .p { color: rgba(27,42,34,.78) !important; }
+
+.chip{
+  color: rgba(27,42,34,.85) !important;
+  background: rgba(214,162,74,.10) !important;  /* soft gold */
+  border-color: rgba(27,42,34,.14) !important;
+}
+
+.pillBtn{
+  color: rgba(27,42,34,.90) !important;
+  background: rgba(255,255,255,.65) !important;
+  border-color: rgba(27,42,34,.14) !important;
+}
+
+.pillBtn.active{
+  color: var(--text) !important;
+  background: rgba(214,162,74,.22) !important;
+  border-color: rgba(214,162,74,.45) !important;
+}
+
+.sizeBtn{
+  color: var(--text) !important;
+  background: rgba(255,255,255,.85) !important;
+  border-color: rgba(27,42,34,.14) !important;
+}
+
+.cartBtn{
+  color: var(--text) !important;
+  background: rgba(255,255,255,.75) !important;
+  border-color: rgba(27,42,34,.14) !important;
+}
   </style>
 </head>
 <body>
