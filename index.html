@@ -1,145 +1,1127 @@
-:root{
-  /* Elevated “apothecary luxe” palette */
-  --bg:#fbf4e8;          
-  --surface:#f6efe1;     
-  --card:#ffffff;        
-  --card2:#f1f6f1;       
-  --text:#111111;        
-  --muted:rgba(17,17,17,.72);
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JahVee’s Herbal Tea — Beauty, Botanicals, & Beyond</title>
 
-  --amber:#d6a24a;       
-  --gold:#f1c86a;        
-  --sage:#7fa88d;        
-  --herb:#2f5f4c;        
+  <!-- Optional fonts (works fine if blocked) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  --line:rgba(17,17,17,.12);
+  <style>
+    :root{
+      /* Luxe spa + witchy apothecary palette */
+      --bg:#fbf4e8;              /* warm cream */
+      --surface:#f6efe1;         /* section surface */
+      --card:rgba(255,255,255,.88);
+      --cardSolid:#ffffff;
+      --cardSoft:rgba(241,246,241,.92); /* soft herb tint */
+      --ink:#111111;             /* true black */
+      --muted:rgba(17,17,17,.70);
 
-  /* Softer, more “premium” shadows */
-  --shadow: 0 14px 40px rgba(20,30,25,.10);
-  --shadow2: 0 10px 26px rgba(20,30,25,.08);
+      --amber:#d6a24a;           /* logo gold */
+      --gold:#f1c86a;            /* highlight */
+      --sage:#7fa88d;            /* sage */
+      --herb:#2f5f4c;            /* deeper green */
+      --violet:#6b5a7a;          /* subtle mystic accent */
 
-  --radius-xl: 30px;
-  --radius-lg: 22px;
-  --radius-md: 16px;
-}
+      --line:rgba(17,17,17,.12);
+      --shadow: 0 16px 46px rgba(20,30,25,.10);
+      --shadow2: 0 10px 28px rgba(20,30,25,.08);
 
-/* Optional nicer typography (works even if font fails) */
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:
-    radial-gradient(1200px 520px at 20% -10%, rgba(214,162,74,.18), transparent 55%),
-    radial-gradient(900px 520px at 90% 10%, rgba(127,168,141,.18), transparent 60%),
-    var(--bg);
-  color: var(--text);
-}
+      --r-xl:32px;
+      --r-lg:24px;
+      --r-md:16px;
 
-/* Subtle “paper” texture without images */
-body::before{
-  content:"";
-  position:fixed; inset:0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    rgba(17,17,17,.015) 0px,
-    rgba(17,17,17,.015) 1px,
-    transparent 1px,
-    transparent 6px
-  );
-  pointer-events:none;
-  opacity:.55;
-}
+      --max:1100px;
+    }
 
-/* Headings feel more luxe */
-h1{
-  margin:0;
-  font-size:42px;
-  letter-spacing:-.03em;
-  line-height:1.05;
-}
-@media(max-width:640px){ h1{font-size:34px;} }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
 
-/* Card improvements */
-.card{
-  background: rgba(255,255,255,.88);
-  border:1px solid var(--line);
-  border-radius: var(--radius-xl);
-  padding:20px;
-  box-shadow: var(--shadow);
-}
-.cardSoft{
-  background: rgba(241,246,241,.92);
-  border:1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding:14px;
-  box-shadow: var(--shadow2);
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.cardSoft:hover{
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
-}
+      /* layered background: spa glow + apothecary mystical hint */
+      background:
+        radial-gradient(1200px 520px at 18% -8%, rgba(214,162,74,.20), transparent 55%),
+        radial-gradient(900px 520px at 92% 8%, rgba(127,168,141,.18), transparent 60%),
+        radial-gradient(780px 480px at 70% 110%, rgba(107,90,122,.12), transparent 65%),
+        var(--bg);
+    }
 
-/* Buttons feel clickable */
-.btn, .btnGhost, .pillBtn, .cartBtn{
-  transition: transform .12s ease, filter .12s ease, background .18s ease, border-color .18s ease;
-}
-.btn:active, .btnGhost:active, .pillBtn:active, .cartBtn:active{
-  transform: scale(.98);
-}
+    /* subtle “paper + sparkle dust” texture */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(rgba(17,17,17,.015) 1px, transparent 1px) 0 0/28px 28px,
+        radial-gradient(rgba(214,162,74,.045) 1px, transparent 1px) 10px 14px/44px 44px,
+        repeating-linear-gradient(
+          0deg,
+          rgba(17,17,17,.012) 0px,
+          rgba(17,17,17,.012) 1px,
+          transparent 1px,
+          transparent 7px
+        );
+      opacity:.7;
+      mix-blend-mode:multiply;
+    }
 
-/* Make pills prettier */
-.pillBtn{
-  border:1px solid rgba(17,17,17,.14);
-  background: rgba(255,255,255,.82);
-  color: rgba(17,17,17,.88);
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:13px;
-  cursor:pointer;
-}
-.pillBtn:hover{ background:rgba(214,162,74,.10); }
-.pillBtn.active{
-  border-color: rgba(214,162,74,.55);
-  background: rgba(214,162,74,.22);
-}
+    a{color:inherit}
 
-/* Inputs feel smoother */
-input,select,textarea{
-  background: rgba(255,255,255,.92);
-  border:1px solid rgba(17,17,17,.14);
-  border-radius: var(--radius-md);
-}
-input:focus,select:focus,textarea:focus{
-  border-color: rgba(214,162,74,.70);
-  box-shadow: 0 0 0 4px rgba(214,162,74,.18);
-}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 16px}
+    .grid{display:grid; gap:16px}
+    .two{grid-template-columns:1.25fr .75fr}
+    @media(max-width:900px){.two{grid-template-columns:1fr}}
 
-/* Simple fade-in animation for page transitions */
-@keyframes fadeUp{
-  from{opacity:0; transform: translateY(8px);}
-  to{opacity:1; transform: translateY(0);}
-}
-#page{ animation: fadeUp .22s ease both; }
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(251,244,232,.74);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 0;
+    }
 
-/* A hero “glass panel” utility */
-.hero{
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(17,17,17,.10);
-  background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(246,239,225,.78));
-  box-shadow: var(--shadow);
-  padding: 22px;
-}
-.heroTag{
-  display:inline-flex;
-  gap:8px;
-  align-items:center;
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid rgba(17,17,17,.12);
-  background: rgba(255,255,255,.72);
-  font-size:12px;
-  font-weight:900;
-}
-.dot{
-  width:8px;height:8px;border-radius:99px;background: var(--sage);
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+    .logoBox{
+      width:46px;height:46px;border-radius:18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.82);
+      display:grid; place-items:center;
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+    }
+    .logoBox img{width:100%;height:100%;object-fit:contain}
+
+    .brandTitle{
+      font-family: Fraunces, ui-serif, Georgia, serif;
+      font-weight:700;
+      letter-spacing:-.02em;
+      font-size:18px;
+      line-height:1.1;
+    }
+    .brandSub{
+      font-size:12px;
+      opacity:.75;
+      margin-top:4px;
+    }
+
+    nav{display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
+
+    .pillBtn{
+      border:1px solid rgba(17,17,17,.14);
+      background: rgba(255,255,255,.82);
+      color: rgba(17,17,17,.88);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      cursor:pointer;
+      transition: transform .12s ease, background .18s ease, border-color .18s ease;
+      white-space:nowrap;
+    }
+    .pillBtn:hover{background:rgba(214,162,74,.10)}
+    .pillBtn:active{transform:scale(.98)}
+    .pillBtn.active{
+      border-color: rgba(214,162,74,.55);
+      background: rgba(214,162,74,.22);
+      color: var(--ink);
+    }
+
+    .cartBtn{
+      border:1px solid rgba(17,17,17,.14);
+      background: rgba(255,255,255,.82);
+      color: var(--ink);
+      padding:10px 12px;
+      border-radius:18px;
+      cursor:pointer;
+      display:flex; align-items:center; gap:8px;
+      box-shadow: var(--shadow2);
+      transition: transform .12s ease, background .18s ease;
+      white-space:nowrap;
+    }
+    .cartBtn:hover{background:rgba(214,162,74,.10)}
+    .cartBtn:active{transform:scale(.98)}
+    .badge{
+      background: linear-gradient(135deg, var(--amber), var(--gold));
+      color: #111;
+      font-weight:900;
+      padding:2px 8px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid rgba(17,17,17,.12);
+    }
+
+    /* Main */
+    main{padding:34px 0; min-height: 65vh;}
+    #page{animation: fadeUp .22s ease both;}
+    @keyframes fadeUp{
+      from{opacity:0; transform: translateY(10px);}
+      to{opacity:1; transform: translateY(0);}
+    }
+
+    /* Typography */
+    h1{
+      margin:0;
+      font-family: Fraunces, ui-serif, Georgia, serif;
+      font-size:44px;
+      letter-spacing:-.03em;
+      line-height:1.04;
+    }
+    @media(max-width:640px){h1{font-size:34px}}
+    .sub{
+      color:var(--muted);
+      line-height:1.55;
+      margin-top:12px;
+      max-width:760px;
+      font-size:14.5px;
+    }
+
+    .titleRow{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap}
+
+    /* Cards */
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding:20px;
+      box-shadow: var(--shadow);
+    }
+    .cardSoft{
+      background: var(--cardSoft);
+      border:1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding:14px;
+      box-shadow: var(--shadow2);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .cardSoft:hover{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .mini{font-size:12px; color:rgba(17,17,17,.64); font-weight:900; letter-spacing:.08em}
+    .h2{font-size:20px; font-weight:900; margin:10px 0 0}
+    .p{color:var(--muted); font-size:14px; line-height:1.55; margin-top:10px}
+
+    .hr{height:1px; background:var(--line); margin:18px 0}
+
+    /* Hero */
+    .hero{
+      border-radius: var(--r-xl);
+      border: 1px solid rgba(17,17,17,.10);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.84), rgba(246,239,225,.80)),
+        radial-gradient(700px 240px at 20% 0%, rgba(214,162,74,.14), transparent 55%),
+        radial-gradient(700px 240px at 90% 10%, rgba(127,168,141,.12), transparent 60%);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-40px;
+      background:
+        radial-gradient(rgba(241,200,106,.25) 1px, transparent 2px) 0 0/70px 70px,
+        radial-gradient(rgba(127,168,141,.16) 1px, transparent 2px) 22px 16px/88px 88px;
+      opacity:.28;
+      transform: rotate(8deg);
+      pointer-events:none;
+    }
+    .heroInner{position:relative; z-index:1}
+    .heroTag{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(17,17,17,.12);
+      background: rgba(255,255,255,.72);
+      font-size:12px;
+      font-weight:900;
+      color: rgba(17,17,17,.86);
+      box-shadow: 0 8px 20px rgba(20,30,25,.06);
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background: var(--sage)}
+    .spark{width:8px;height:8px;border-radius:99px;background: var(--gold); box-shadow:0 0 0 4px rgba(241,200,106,.20)}
+
+    /* Buttons */
+    .row{display:flex; gap:10px; flex-wrap:wrap}
+    .row > *{flex:1}
+
+    .btn{
+      background: linear-gradient(135deg, var(--amber), var(--gold));
+      color:#111;
+      font-weight:900;
+      border:0;
+      padding:11px 14px;
+      border-radius:18px;
+      cursor:pointer;
+      box-shadow: 0 10px 22px rgba(214,162,74,.18);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn:hover{filter:brightness(1.03)}
+    .btn:active{transform:scale(.98)}
+
+    .btnGhost{
+      border:1px solid rgba(17,17,17,.14);
+      background: rgba(255,255,255,.82);
+      color: var(--ink);
+      padding:11px 14px;
+      border-radius:18px;
+      cursor:pointer;
+      font-weight:900;
+      transition: transform .12s ease, background .18s ease;
+    }
+    .btnGhost:hover{background:rgba(214,162,74,.10)}
+    .btnGhost:active{transform:scale(.98)}
+
+    /* Chips */
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .chip{
+      border:1px solid rgba(17,17,17,.12);
+      background: rgba(214,162,74,.10);
+      color: rgba(17,17,17,.86);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    /* Forms */
+    input,select,textarea{
+      width:100%;
+      background: rgba(255,255,255,.92);
+      color: var(--ink);
+      border:1px solid rgba(17,17,17,.14);
+      border-radius: var(--r-md);
+      padding:10px 12px;
+      outline:none;
+      font-size:14px;
+      transition: box-shadow .18s ease, border-color .18s ease;
+    }
+    textarea{min-height:110px; resize:vertical}
+    input:focus,select:focus,textarea:focus{
+      border-color: rgba(214,162,74,.70);
+      box-shadow: 0 0 0 4px rgba(214,162,74,.18);
+    }
+
+    /* Products grid */
+    .products{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
+    @media(max-width:980px){.products{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.products{grid-template-columns:1fr}}
+
+    .priceRow{display:grid; gap:8px; margin-top:12px}
+    .sizeBtn{
+      display:flex; align-items:center; justify-content:space-between;
+      border:1px solid rgba(17,17,17,.14);
+      background: rgba(255,255,255,.92);
+      border-radius:18px;
+      padding:10px 12px;
+      cursor:pointer;
+      color: var(--ink);
+      font-size:14px;
+      font-weight:800;
+      transition: transform .12s ease, background .18s ease;
+    }
+    .sizeBtn:hover{background:rgba(214,162,74,.10)}
+    .sizeBtn:active{transform:scale(.99)}
+    .gold{color:var(--amber); font-weight:900}
+
+    /* Notices */
+    .notice{
+      border:1px solid rgba(127,168,141,.40);
+      background: rgba(127,168,141,.18);
+      padding:12px;
+      border-radius:18px;
+      font-size:14px;
+      margin-top:12px;
+      color: var(--ink);
+      font-weight:700;
+    }
+    .noticeMystic{
+      border:1px solid rgba(107,90,122,.35);
+      background: rgba(107,90,122,.14);
+    }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      padding:28px 0;
+      margin-top:22px;
+      background: rgba(246,239,225,.60);
+    }
+    .footGrid{display:grid; gap:16px; grid-template-columns:1.2fr 1fr 1fr}
+    @media(max-width:900px){.footGrid{grid-template-columns:1fr}}
+
+    pre{white-space:pre-wrap;color:var(--ink)}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="#home" onclick="go('home'); return false;">
+        <div class="logoBox">
+          <img src="logo.png" alt="JahVee logo"
+            onerror="this.style.display='none'; this.parentElement.textContent='logo'; this.parentElement.style.color='rgba(17,17,17,.55)'; this.parentElement.style.fontSize='12px';" />
+        </div>
+        <div>
+          <div class="brandTitle">JahVee’s <span style="font-family:Inter; font-weight:700; opacity:.72; font-size:14px; margin-left:8px;">Herbal Tea</span></div>
+          <div class="brandSub">Beauty, Botanicals, & Beyond</div>
+        </div>
+      </a>
+
+      <nav id="nav"></nav>
+
+      <button class="cartBtn" onclick="go('checkout')">
+        Cart <span class="badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="page"></section>
+  </main>
+
+  <footer>
+    <div class="wrap footGrid">
+      <div>
+        <div style="font-family:Fraunces, ui-serif, Georgia, serif; font-weight:700; font-size:18px;">JahVee’s</div>
+        <div style="opacity:.75;font-size:13px;margin-top:2px;">Beauty, Botanicals, & Beyond</div>
+        <div class="p" style="margin-top:10px">Soft spa-level calm with apothecary soul — custom blends made from your real inventory.</div>
+      </div>
+      <div>
+        <div style="font-weight:900;">Explore</div>
+        <div class="chips" style="margin-top:10px">
+          <button class="pillBtn" onclick="go('shop')">Shop</button>
+          <button class="pillBtn" onclick="go('menu')">Tea Menu</button>
+          <button class="pillBtn" onclick="go('benefits')">Benefits</button>
+          <button class="pillBtn" onclick="go('booking')">Booking</button>
+          <button class="pillBtn" onclick="go('build')">Build Your Own</button>
+          <button class="pillBtn" onclick="go('labels')">Labels</button>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:900;">Stay connected</div>
+        <div class="p" style="margin-top:10px">Instagram / TikTok: <span style="opacity:.92">@JahVee</span></div>
+        <div class="p" style="margin-top:6px">Email: <span style="opacity:.92">hello@jahvee.com</span></div>
+        <div style="opacity:.65;font-size:12px;margin-top:10px;">© <span id="year"></span> JahVee’s</div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const INVENTORY = [
+    "Mullein Leaf","Dandelion leaf","Nettle leaf","Prunella","Hibiscus","Elder berry","Wormwood herb",
+    "Hyssop","Mugwort","Catnip","Jasmine flower","Lavender","Marshmallow Root","Tansy","Black seed",
+    "Ashwagandha root powder","Kelp powder","Punarnava powder","Blue Lotus","Burdock root","Star anise",
+    "Klip dagga","Rasbery leaf"
+  ];
+
+  const SIZES = [
+    { key:"sample", label:"Sample (10g)", price:6 },
+    { key:"small",  label:"Small (1oz / 28g)", price:14 },
+    { key:"medium", label:"Medium (2oz / 56g)", price:24 },
+    { key:"large",  label:"Large (4oz / 113g)", price:42 },
+  ];
+
+  const BLENDS = [
+    { id:"breath-release", name:"Breath & Release", category:"Breath & Lungs",
+      notes:"Soft, clearing, and comforting — for open airways + gentle release.",
+      ingredients:["Mullein Leaf","Marshmallow Root","Hyssop","Nettle leaf"],
+      caffeine:"Caffeine-free", taste:"Herbal, smooth, lightly green",
+      ritual:"Inhale the steam for 3 slow breaths before your first sip.",
+      affirmation:"I release what constricts me. I breathe in freedom.",
+    },
+    { id:"glow-flow", name:"Glow & Flow", category:"Glow & Skin",
+      notes:"Radiant botanicals to support glow-from-within rituals.",
+      ingredients:["Hibiscus","Nettle leaf","Dandelion leaf","Burdock root"],
+      caffeine:"Caffeine-free", taste:"Bright, tangy, berry-floral",
+      ritual:"Sip while doing a 60-second face massage.",
+      affirmation:"My body knows how to glow, cleanse, and renew.",
+    },
+    { id:"rooted-strength", name:"Rooted Strength", category:"Root & Ground",
+      notes:"Grounding roots + mineral-rich herbs for steady energy.",
+      ingredients:["Burdock root","Ashwagandha root powder","Nettle leaf","Dandelion leaf"],
+      caffeine:"Caffeine-free", taste:"Earthy, robust, lightly bitter",
+      ritual:"Hold the warm cup at your heart for 10 seconds before sipping.",
+      affirmation:"I am grounded. I am steady. I am supported.",
+    },
+    { id:"moon-tea", name:"Moon Tea", category:"Moon & Mystic",
+      notes:"Dreamy, night-blooming botanicals for moonlit reflection.",
+      ingredients:["Blue Lotus","Mugwort","Jasmine flower","Lavender"],
+      caffeine:"Caffeine-free", taste:"Floral, mystical, soft lavender finish",
+      ritual:"Sip under dim light. Journal one sentence: “Tonight I release…”",
+      affirmation:"I trust the timing of my life and the wisdom of my intuition.",
+    },
+    { id:"sacred-feminine", name:"Sacred Feminine Blend", category:"Feminine",
+      notes:"A soft, supportive blend for cyclical harmony + self-devotion.",
+      ingredients:["Rasbery leaf","Hibiscus","Jasmine flower","Nettle leaf"],
+      caffeine:"Caffeine-free", taste:"Floral-tart, comforting",
+      ritual:"Place one hand on belly, one on heart. Sip slowly for 7 breaths.",
+      affirmation:"I honor my cycles. I nurture myself with devotion.",
+    },
+    { id:"botanical-balance", name:"Botanical Balance", category:"Digest & Detox",
+      notes:"A balanced, everyday blend to support gentle reset energy.",
+      ingredients:["Dandelion leaf","Prunella","Nettle leaf","Burdock root"],
+      caffeine:"Caffeine-free", taste:"Clean, green, lightly earthy",
+      ritual:"Sip after meals and name 3 things you’re grateful for.",
+      affirmation:"I choose balance. I support my body with love.",
+    },
+  ];
+
+  const ROUTES = [
+    ["home","Home"],
+    ["shop","Shop"],
+    ["menu","Tea Menu"],
+    ["benefits","Benefits"],
+    ["about","About"],
+    ["booking","Booking"],
+    ["labels","Labels"],
+    ["build","Build Your Own"],
+    ["contact","Contact"],
+  ];
+
+  const $page = document.getElementById("page");
+  const $nav  = document.getElementById("nav");
+  const $count= document.getElementById("cartCount");
+
+  let cart = [];
+  const state = { shopCat:"All", shopQ:"" };
+  let selected = [];
+
+  function money(n){ return `$${Number(n).toFixed(2)}`; }
+  function escapeHtml(s){
+    return (s||"")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;");
+  }
+
+  function setCartCount(){
+    const c = cart.reduce((a,i)=>a+i.qty,0);
+    $count.textContent = c;
+  }
+
+  function nav(){
+    const current = getRoute();
+    $nav.innerHTML = ROUTES.map(([k,label]) => `
+      <button class="pillBtn ${current===k?'active':''}" onclick="go('${k}')">${label}</button>
+    `).join("");
+  }
+
+  function toast(msg, mystic=false){
+    const el = document.createElement("div");
+    el.className = "notice" + (mystic ? " noticeMystic" : "");
+    el.style.position="fixed";
+    el.style.right="16px";
+    el.style.bottom="16px";
+    el.style.maxWidth="380px";
+    el.style.zIndex="999";
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(()=> el.remove(), 2200);
+  }
+
+  function addToCart(productId, sizeKey){
+    const b = BLENDS.find(x=>x.id===productId);
+    const s = SIZES.find(x=>x.key===sizeKey);
+    if(!b || !s) return;
+    const idx = cart.findIndex(x=>x.id===productId && x.sizeKey===sizeKey);
+    if(idx>=0) cart[idx].qty += 1;
+    else cart.push({id:productId, name:b.name, sizeKey, unitPrice:s.price, qty:1});
+    setCartCount();
+    toast(`Added: ${b.name} • ${s.label}`, b.category.includes("Mystic"));
+  }
+
+  function go(r){ location.hash = "#" + r; }
+
+  function getRoute(){
+    const h = (location.hash || "#home").replace("#","");
+    const valid = ROUTES.map(x=>x[0]).concat(["checkout"]);
+    return valid.includes(h) ? h : "home";
+  }
+
+  /* PAGES */
+
+  function Home(){
+    const featured = BLENDS.slice(0,4).map(b => `
+      <div class="cardSoft">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <div style="font-weight:900;font-size:18px">${b.name}</div>
+            <div style="opacity:.75;font-size:13px">${b.category}</div>
+          </div>
+          <div class="gold">from ${money(14)}</div>
+        </div>
+        <div class="p">${b.notes}</div>
+        <div class="chips">${b.ingredients.slice(0,3).map(i=>`<span class="chip">${i}</span>`).join("")}</div>
+        <div class="row" style="margin-top:12px">
+          <button class="btn" onclick="addToCart('${b.id}','small')">Add to cart</button>
+          <button class="btnGhost" onclick="go('shop')">View all</button>
+        </div>
+      </div>
+    `).join("");
+
+    return `
+      <div class="hero">
+        <div class="heroInner">
+          <div class="heroTag">
+            <span class="dot"></span>
+            spa-calm + apothecary magic
+            <span class="spark"></span>
+          </div>
+
+          <div class="titleRow" style="margin-top:14px">
+            <div>
+              <h1>Golden herbal rituals for your everyday glow.</h1>
+              <div class="sub">
+                Sip like a spa day, think like an apothecary. Shop signature blends, book tea consultations + readings,
+                and build your own blend from JahVee’s real herbal inventory.
+              </div>
+            </div>
+            <div class="row" style="min-width:280px">
+              <button class="btn" onclick="go('shop')">Shop blends</button>
+              <button class="btnGhost" onclick="go('build')">Build your own</button>
+            </div>
+          </div>
+
+          <div class="chips" style="margin-top:14px">
+            <span class="chip">Apothecary vibes</span>
+            <span class="chip">Soft spa ritual</span>
+            <span class="chip">Affirmations + intention</span>
+            <span class="chip">Limited drops</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid two" style="margin-top:18px">
+        <div class="card">
+          <div class="h2">Featured blends</div>
+          <div class="grid" style="margin-top:14px;gap:12px">
+            ${featured}
+          </div>
+        </div>
+
+        <div class="grid" style="gap:16px">
+          ${EmailSignup()}
+          ${Ritual()}
+        </div>
+      </div>
+    `;
+  }
+
+  function EmailSignup(){
+    return `
+      <div class="card">
+        <div class="mini">EMAIL SIGNUP</div>
+        <div class="h2">Get rituals + new blend drops</div>
+        <div class="p">Weekly tea rituals, affirmations, and early access to limited blends.</div>
+        <div class="row" style="margin-top:12px">
+          <input id="signupEmail" placeholder="you@email.com" />
+          <button class="btn" onclick="signup()">Join</button>
+        </div>
+        <div id="signupMsg"></div>
+      </div>
+    `;
+  }
+  window.signup = function(){
+    const v = (document.getElementById("signupEmail")||{}).value || "";
+    if(!v.trim()) return;
+    const msg = document.getElementById("signupMsg");
+    msg.innerHTML = `<div class="notice">You’re in ✨ Check your inbox soon.</div>`;
+    document.getElementById("signupEmail").value = "";
+    setTimeout(()=>{ msg.innerHTML=""; }, 2600);
+  }
+
+  function Ritual(){
+    const blocks = [
+      ["Morning Glow","Sip with intention. Say: “I choose ease, clarity, and glow.”"],
+      ["Midday Reset","3 breaths, 3 sips. Release tension from shoulders + jaw."],
+      ["Moonlight Wind-Down","Dim the lights, sip slowly, journal one sentence of truth."]
+    ].map(([t,txt])=>`
+      <div class="cardSoft">
+        <div style="font-weight:900">${t}</div>
+        <div class="p" style="margin-top:6px">${txt}</div>
+      </div>
+    `).join("");
+
+    return `
+      <div class="card">
+        <div class="mini">TEA RITUAL</div>
+        <div class="h2">A soft ritual, every cup</div>
+        <div class="grid" style="margin-top:12px;gap:10px">${blocks}</div>
+      </div>
+    `;
+  }
+
+  window.setCat = function(c){ state.shopCat=c; render(); }
+  window.setQ   = function(q){ state.shopQ=q; render(); }
+
+  function Shop(){
+    const categories = ["All", ...Array.from(new Set(BLENDS.map(b=>b.category)))];
+    const catButtons = categories.map(c=>`
+      <button class="pillBtn ${state.shopCat===c?'active':''}" onclick="setCat('${c}')">${c}</button>
+    `).join("");
+
+    const q = (state.shopQ||"").trim().toLowerCase();
+    const list = BLENDS.filter(b=>{
+      const inCat = state.shopCat==="All" ? true : b.category===state.shopCat;
+      const inQ = !q || b.name.toLowerCase().includes(q) || b.category.toLowerCase().includes(q) || b.ingredients.join(" ").toLowerCase().includes(q);
+      return inCat && inQ;
+    });
+
+    const cards = list.map(b=>`
+      <div class="cardSoft">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <div style="font-weight:900;font-size:18px">${b.name}</div>
+            <div style="opacity:.75;font-size:13px">${b.category}</div>
+          </div>
+          <div style="opacity:.75;font-size:12px;font-weight:900">${b.caffeine}</div>
+        </div>
+
+        <div class="p">${b.notes}</div>
+
+        <div class="chips">
+          <span class="chip">${b.taste}</span>
+          ${b.category.includes("Mystic") ? `<span class="chip" style="background:rgba(107,90,122,.12)">Mystic</span>` : ``}
+        </div>
+
+        <div class="chips">${b.ingredients.slice(0,4).map(i=>`<span class="chip">${i}</span>`).join("")}</div>
+
+        <div class="priceRow">
+          ${SIZES.map(s=>`
+            <div class="sizeBtn" onclick="addToCart('${b.id}','${s.key}')">
+              <span>${s.label}</span>
+              <span class="gold">${money(s.price)}</span>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `).join("");
+
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Shop blends</h1>
+          <div class="sub">Filter by category, search by herb, and add sizes to your cart.</div>
+        </div>
+        <div class="row" style="min-width:320px">
+          <input placeholder="Search blend, herb, category…" value="${escapeHtml(state.shopQ||"")}" oninput="setQ(this.value)" />
+          <button class="btnGhost" onclick="go('checkout')">Go to cart (${cart.reduce((a,c)=>a+c.qty,0)})</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
+          <div class="mini">CATEGORIES</div>
+          <div class="chips">
+            ${catButtons}
+            <button class="pillBtn" onclick="go('build')">Build Your Own</button>
+          </div>
+        </div>
+        <div class="hr"></div>
+        <div class="products">${cards || `<div class="p">No blends found. Try another search.</div>`}</div>
+      </div>
+    `;
+  }
+
+  function Menu(){
+    const blocks = BLENDS.map(b=>`
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+          <div>
+            <div style="font-weight:900;font-size:20px">${b.name}</div>
+            <div style="opacity:.75;font-size:13px">${b.category}</div>
+          </div>
+          <div class="gold">${money(14)} • ${money(24)}</div>
+        </div>
+        <div class="p">${b.notes}</div>
+        <div class="chips">
+          <span class="chip">${b.taste}</span>
+          <span class="chip">${b.caffeine}</span>
+        </div>
+        <div class="p"><b>Ingredients:</b> ${b.ingredients.join(", ")}</div>
+      </div>
+    `).join("");
+
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Tea Menu</h1>
+          <div class="sub">Signature blends + vibe notes. Print-friendly menu page.</div>
+        </div>
+      </div>
+      <div class="grid two" style="margin-top:16px">${blocks}</div>
+    `;
+  }
+
+  function Benefits(){
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Benefits</h1>
+          <div class="sub">A gentle wellness/ritual page (non-medical). Add more detail per blend later.</div>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:16px">
+        <div class="card">
+          <div class="mini">YOUR HERB INVENTORY</div>
+          <div class="p">Use this list for custom blends and future product drops:</div>
+          <div class="chips">${INVENTORY.map(h=>`<span class="chip">${h}</span>`).join("")}</div>
+          <div style="opacity:.75;font-size:12px;margin-top:10px">* Wellness/ritual-focused and not medical advice.</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function About(){
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>About JahVee</h1>
+          <div class="sub">Your story — luxe calm, apothecary heart, and a little magic.</div>
+        </div>
+      </div>
+
+      <div class="grid two" style="margin-top:16px">
+        <div class="card">
+          <div class="mini">THE JAHVEE STORY</div>
+          <div class="h2">Beauty, Botanicals, & Beyond — brewed with intention</div>
+          <div class="p">
+            JahVee’s Herbal Tea is a soft place to land — where herbs meet ritual, and every cup becomes a moment of self-return.
+            This brand was born from real life transitions: seasons of starting over, learning new skills, and choosing a future that feels aligned.
+          </div>
+          <div class="p">
+            Here, we blend with purpose: comfort for the breath, glow for the spirit, grounding for the body, and moonlight for the mind.
+            It’s not just tea — it’s a practice: sip, breathe, affirm, and keep walking toward your next level.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="mini">QUICK FACTS</div>
+          <div class="grid" style="margin-top:12px;gap:10px">
+            <div class="cardSoft"><b>Signature vibe</b><div class="p" style="margin-top:6px">Gold glow + herbal calm + a mystic touch</div></div>
+            <div class="cardSoft"><b>Customization</b><div class="p" style="margin-top:6px">Custom blends from your inventory list</div></div>
+            <div class="cardSoft"><b>Experience</b><div class="p" style="margin-top:6px">Ritual + affirmation with each cup</div></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function Booking(){
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Booking</h1>
+          <div class="sub">Booking request form (UI confirmation). Later you can connect Calendly.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="mini">REQUEST A BOOKING</div>
+        <div class="grid" style="margin-top:12px;gap:10px;max-width:560px">
+          <label class="p" style="margin:0">Service
+            <select id="bkType">
+              <option>Tea Consultation</option>
+              <option>Tea + Intuition Reading</option>
+              <option>Custom Blend Session</option>
+            </select>
+          </label>
+          <label class="p" style="margin:0">Name <input id="bkName" placeholder="Your name"></label>
+          <label class="p" style="margin:0">Email <input id="bkEmail" placeholder="you@email.com"></label>
+          <label class="p" style="margin:0">Notes <textarea id="bkNotes" placeholder="Tell me what you need support with…"></textarea></label>
+          <button class="btn" onclick="book()">Submit request</button>
+          <div id="bkMsg"></div>
+        </div>
+      </div>
+    `;
+  }
+  window.book = function(){
+    const n = (document.getElementById("bkName")||{}).value || "";
+    const e = (document.getElementById("bkEmail")||{}).value || "";
+    if(!n.trim() || !e.trim()) return;
+    document.getElementById("bkMsg").innerHTML = `<div class="notice noticeMystic">Booking request received ✨ You’ll get an email to confirm your time.</div>`;
+    document.getElementById("bkName").value = "";
+    document.getElementById("bkEmail").value = "";
+    document.getElementById("bkNotes").value = "";
+  }
+
+  function Labels(){
+    const options = BLENDS.map(b=>`<option value="${b.id}">${b.name}</option>`).join("");
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Product Labels</h1>
+          <div class="sub">Pick a blend to generate clean, print-ready label text.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <label class="p" style="margin:0">Select a blend
+          <select id="labelBlend" onchange="renderLabel()">${options}</select>
+        </label>
+        <div class="hr"></div>
+        <div class="mini">COPY / PASTE LABEL TEXT</div>
+        <pre id="labelText" class="p" style="margin-top:10px"></pre>
+      </div>
+    `;
+  }
+
+  window.renderLabel = function(){
+    const id = (document.getElementById("labelBlend")||{}).value || BLENDS[0].id;
+    const b = BLENDS.find(x=>x.id===id) || BLENDS[0];
+    const text = [
+      `BRAND: JahVee’s — Beauty, Botanicals, & Beyond`,
+      `PRODUCT: ${b.name}`,
+      `CATEGORY: ${b.category}`,
+      `INGREDIENTS: ${b.ingredients.join(", ")}`,
+      `TASTE NOTES: ${b.taste}`,
+      `RITUAL: ${b.ritual}`,
+      `AFFIRMATION: "${b.affirmation}"`,
+      `STEEPING: 1 tbsp per 8–10 oz • 205°F • 8–12 min • Cover while steeping`,
+      `NET WT: (choose size)`,
+      `CAFFEINE: ${b.caffeine}`,
+      `NOTE: Wellness ritual tea. Not intended to diagnose, treat, cure, or prevent any disease.`,
+    ].join("\n");
+    document.getElementById("labelText").textContent = text;
+  }
+
+  function Build(){
+    const herbBtns = INVENTORY.map(h=>`
+      <button class="pillBtn" onclick="toggleHerb('${h.replaceAll("'","\\'")}')">${h}</button>
+    `).join("");
+
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Build Your Own Blend</h1>
+          <div class="sub">Select your herbs, set your intention, and submit your custom blend request.</div>
+        </div>
+      </div>
+
+      <div class="grid two" style="margin-top:16px">
+        <div class="card">
+          <div class="mini">YOUR HERB INVENTORY</div>
+          <div class="p">Click herbs to add them to your custom blend:</div>
+          <div class="chips">${herbBtns}</div>
+
+          <div class="hr"></div>
+          <div class="mini">SELECTED HERBS</div>
+          <div id="selectedHerbs" class="p">None selected yet.</div>
+          <div class="notice" style="margin-top:14px">
+            Tip: pick 3–6 herbs for a balanced blend (flavor + function + vibe).
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="mini">CUSTOM BLEND REQUEST</div>
+          <div class="grid" style="margin-top:12px;gap:10px">
+            <label class="p" style="margin:0">Name <input id="byoName" placeholder="Your name"></label>
+            <label class="p" style="margin:0">Email <input id="byoEmail" placeholder="you@email.com"></label>
+            <label class="p" style="margin:0">Intention <input id="byoIntent" placeholder="calm nights, glow routine, grounding mornings…"></label>
+            <label class="p" style="margin:0">Notes <textarea id="byoNotes" placeholder="Avoid list, flavors, goals…"></textarea></label>
+            <button class="btn" onclick="submitBYO()">Submit custom blend request</button>
+            <div id="byoMsg"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  window.toggleHerb = function(h){
+    if(selected.includes(h)) selected = selected.filter(x=>x!==h);
+    else selected = [...selected, h];
+    const el = document.getElementById("selectedHerbs");
+    if(el) el.textContent = selected.length ? selected.join(", ") : "None selected yet.";
+  }
+
+  window.submitBYO = function(){
+    const n = (document.getElementById("byoName")||{}).value || "";
+    const e = (document.getElementById("byoEmail")||{}).value || "";
+    if(!n.trim() || !e.trim() || selected.length===0) return;
+    document.getElementById("byoMsg").innerHTML = `<div class="notice noticeMystic">Submitted ✨ We received your custom blend request.</div>`;
+    document.getElementById("byoName").value = "";
+    document.getElementById("byoEmail").value = "";
+    document.getElementById("byoIntent").value = "";
+    document.getElementById("byoNotes").value = "";
+    selected = [];
+    const el = document.getElementById("selectedHerbs");
+    if(el) el.textContent = "None selected yet.";
+  }
+
+  function Contact(){
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Contact + Social</h1>
+          <div class="sub">Send a message or connect on socials.</div>
+        </div>
+      </div>
+
+      <div class="grid two" style="margin-top:16px">
+        <div class="card">
+          <div class="mini">SEND A MESSAGE</div>
+          <div class="grid" style="margin-top:12px;gap:10px">
+            <label class="p" style="margin:0">Name <input id="cName" placeholder="Your name"></label>
+            <label class="p" style="margin:0">Email <input id="cEmail" placeholder="you@email.com"></label>
+            <label class="p" style="margin:0">Message <textarea id="cMsg" placeholder="Tell me what you’re looking for…"></textarea></label>
+            <button class="btn" onclick="sendMsg()">Send message</button>
+            <div id="cDone"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="mini">SOCIAL + EMAIL</div>
+          <div class="p" style="margin-top:12px">Instagram / TikTok: <b>@JahVee</b></div>
+          <div class="p">Email: <b>hello@jahvee.com</b></div>
+          <div class="notice noticeMystic" style="margin-top:14px">
+            For custom blends, include your intention + any herbs you want to avoid.
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  window.sendMsg = function(){
+    const n = (document.getElementById("cName")||{}).value||"";
+    const e = (document.getElementById("cEmail")||{}).value||"";
+    const m = (document.getElementById("cMsg")||{}).value||"";
+    if(!n.trim()||!e.trim()||!m.trim()) return;
+    document.getElementById("cDone").innerHTML = `<div class="notice">Message sent ✨ We’ll reply soon.</div>`;
+    document.getElementById("cName").value = "";
+    document.getElementById("cEmail").value = "";
+    document.getElementById("cMsg").value = "";
+  }
+
+  function Checkout(){
+    const subtotal = cart.reduce((sum, it)=> sum + it.unitPrice*it.qty, 0);
+    const shipping = cart.length ? 6.50 : 0;
+    const total = subtotal + shipping;
+
+    const items = cart.length ? cart.map((it, idx)=>`
+      <div class="cardSoft" style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+        <div>
+          <div style="font-weight:900">${it.name}</div>
+          <div style="opacity:.75;font-size:13px">${SIZES.find(s=>s.key===it.sizeKey).label} • ${money(it.unitPrice)}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+          <button class="pillBtn" onclick="qty(${idx},-1)">–</button>
+          <div style="min-width:26px;text-align:center;font-weight:900">${it.qty}</div>
+          <button class="pillBtn" onclick="qty(${idx},1)">+</button>
+          <div class="gold" style="min-width:86px;text-align:right">${money(it.unitPrice*it.qty)}</div>
+          <button class="pillBtn" onclick="rm(${idx})">Remove</button>
+        </div>
+      </div>
+    `).join("") : `<div class="p">Your cart is empty. Add a blend from the Shop page.</div>`;
+
+    return `
+      <div class="titleRow">
+        <div>
+          <h1>Cart + Checkout</h1>
+          <div class="sub">Checkout-ready layout. Connect Stripe/Square later.</div>
+        </div>
+        <button class="btnGhost" onclick="go('shop')">Continue shopping</button>
+      </div>
+
+      <div class="grid two" style="margin-top:16px">
+        <div class="card">
+          <div class="mini">YOUR ITEMS</div>
+          <div class="grid" style="margin-top:12px;gap:10px">${items}</div>
+        </div>
+
+        <div class="card">
+          <div class="mini">ORDER SUMMARY</div>
+          <div class="p" style="display:flex;justify-content:space-between"><span>Subtotal</span><b>${money(subtotal)}</b></div>
+          <div class="p" style="display:flex;justify-content:space-between"><span>Shipping</span><b>${money(shipping)}</b></div>
+          <div class="hr"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:900">Total</div>
+            <div class="gold" style="font-size:18px">${money(total)}</div>
+          </div>
+
+          <div class="hr"></div>
+          <div class="mini">CHECKOUT (SIMULATED)</div>
+          <div class="row" style="margin-top:10px">
+            <input id="coEmail" placeholder="you@email.com" />
+            <button class="btn" onclick="placeOrder()">Place order</button>
+          </div>
+          <div id="coMsg"></div>
+          <div style="opacity:.75;font-size:12px;margin-top:10px">
+            Next step: replace “Place order” with Stripe Checkout / Square payment links.
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  window.qty = function(i, d){
+    cart[i].qty = Math.max(1, cart[i].qty + d);
+    render();
+  }
+  window.rm = function(i){
+    cart = cart.filter((_,idx)=> idx!==i);
+    setCartCount();
+    render();
+  }
+  window.placeOrder = function(){
+    const e = (document.getElementById("coEmail")||{}).value||"";
+    if(!e.trim() || cart.length===0) return;
+    document.getElementById("coMsg").innerHTML = `<div class="notice noticeMystic">Order confirmed ✨ Thank you for shopping JahVee’s.</div>`;
+    cart = [];
+    setCartCount();
+    render();
+  }
+
+  function render(){
+    nav();
+    const r = getRoute();
+    if(r==="home") $page.innerHTML = Home();
+    else if(r==="shop") $page.innerHTML = Shop();
+    else if(r==="menu") $page.innerHTML = Menu();
+    else if(r==="benefits") $page.innerHTML = Benefits();
+    else if(r==="about") $page.innerHTML = About();
+    else if(r==="booking") $page.innerHTML = Booking();
+    else if(r==="labels") { $page.innerHTML = Labels(); setTimeout(()=>renderLabel(),0); }
+    else if(r==="build") $page.innerHTML = Build();
+    else if(r==="contact") $page.innerHTML = Contact();
+    else if(r==="checkout") $page.innerHTML = Checkout();
+    else $page.innerHTML = Home();
+
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  window.addToCart = addToCart;
+  window.go = go;
+
+  window.addEventListener("hashchange", render);
+  if(!location.hash) location.hash = "#home";
+  render();
+  setCartCount();
+</script>
+</body>
+</html>
