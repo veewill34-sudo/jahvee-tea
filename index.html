@@ -5,33 +5,34 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>JahVee’s Herbal Tea — Beauty, Botanicals, & Beyond</title>
 
-  <!-- Optional fonts (works fine if blocked) -->
+  <!-- Fonts (optional; if blocked, site still works) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Luxe spa + witchy apothecary palette */
-      --bg:#fbf4e8;              /* warm cream */
-      --surface:#f6efe1;         /* section surface */
-      --card:rgba(255,255,255,.88);
-      --cardSolid:#ffffff;
-      --cardSoft:rgba(241,246,241,.92); /* soft herb tint */
-      --ink:#111111;             /* true black */
-      --muted:rgba(17,17,17,.70);
+      /* Brand palette (gold + herb) */
+      --ink:#111111;
+      --muted:rgba(17,17,17,.72);
 
-      --amber:#d6a24a;           /* logo gold */
-      --gold:#f1c86a;            /* highlight */
-      --sage:#7fa88d;            /* sage */
-      --herb:#2f5f4c;            /* deeper green */
-      --violet:#6b5a7a;          /* subtle mystic accent */
+      --amber:#d6a24a;
+      --gold:#f1c86a;
+      --sage:#7fa88d;
+      --herb:#2f5f4c;
+      --violet:#6b5a7a;
 
-      --line:rgba(17,17,17,.12);
-      --shadow: 0 16px 46px rgba(20,30,25,.10);
-      --shadow2: 0 10px 28px rgba(20,30,25,.08);
+      --line:rgba(17,17,17,.14);
 
-      --r-xl:32px;
+      /* “Glass” card look (NO page tint; image stays crisp) */
+      --glass: rgba(255,255,255,.86);
+      --glass2: rgba(255,255,255,.78);
+      --glassSoft: rgba(241,246,241,.86);
+
+      --shadow: 0 18px 55px rgba(12,20,16,.14);
+      --shadow2: 0 10px 28px rgba(12,20,16,.10);
+
+      --r-xl:34px;
       --r-lg:24px;
       --r-md:16px;
 
@@ -40,40 +41,32 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
-   body{
-  margin:0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: var(--ink);
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
 
-  background: url("bg-forest.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
+      /* BACKGROUND IMAGE ONLY (no cream overlay) */
+      background: url("bg-forest.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
 
-    /* subtle “paper + sparkle dust” texture */
+    /* Optional subtle sparkle (very light so image stays visible) */
     body::before{
-      body::before{ opacity: .25; }
       content:"";
       position:fixed; inset:0;
       pointer-events:none;
       background:
-        radial-gradient(rgba(17,17,17,.015) 1px, transparent 1px) 0 0/28px 28px,
-        radial-gradient(rgba(214,162,74,.045) 1px, transparent 1px) 10px 14px/44px 44px,
-        repeating-linear-gradient(
-          0deg,
-          rgba(17,17,17,.012) 0px,
-          rgba(17,17,17,.012) 1px,
-          transparent 1px,
-          transparent 7px
-        );
-      opacity:.7;
-      mix-blend-mode:multiply;
+        radial-gradient(rgba(241,200,106,.20) 1px, transparent 2px) 0 0/92px 92px,
+        radial-gradient(rgba(127,168,141,.16) 1px, transparent 2px) 24px 22px/120px 120px;
+      opacity:.16;
+      mix-blend-mode: overlay;
     }
 
     a{color:inherit}
-
     .wrap{max-width:var(--max); margin:0 auto; padding:0 16px}
     .grid{display:grid; gap:16px}
     .two{grid-template-columns:1.25fr .75fr}
@@ -83,51 +76,55 @@
     header{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(14px);
-      background: rgba(251,244,232,.74);
-      border-bottom:1px solid var(--line);
+      background: rgba(255,255,255,.62);
+      border-bottom:1px solid rgba(17,17,17,.10);
     }
     .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display:flex; align-items:center; justify-content:space-between;
       gap:12px;
       padding:12px 0;
     }
 
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
+      display:flex; align-items:center; gap:14px;
       text-decoration:none;
+      min-width: 280px;
     }
+
     .logoBox{
-      width:46px;height:46px;border-radius:18px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.82);
+      width:78px;
+      height:78px;
+      border-radius:24px;
+      border:1px solid rgba(17,17,17,.14);
+      background: rgba(255,255,255,.90);
       display:grid; place-items:center;
       overflow:hidden;
       box-shadow: var(--shadow2);
+      flex: 0 0 auto;
     }
-    .logoBox img{width:100%;height:100%;object-fit:contain}
+    .logoBox img{
+      width:100%; height:100%;
+      object-fit: cover;             /* crops scenery, makes text readable */
+      object-position: center 15%;
+      transform: scale(1.10);        /* slightly zoom to enlarge lettering */
+      filter: contrast(1.08) saturate(1.08) brightness(1.03);
+    }
 
     .brandTitle{
       font-family: Fraunces, ui-serif, Georgia, serif;
       font-weight:700;
       letter-spacing:-.02em;
-      font-size:18px;
+      font-size:22px;
       line-height:1.1;
     }
-    .brandSub{
-      font-size:12px;
-      opacity:.75;
-      margin-top:4px;
-    }
+    .brandSub{font-size:13px; opacity:.78; margin-top:4px}
 
     nav{display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
+    @media(max-width:860px){ nav{display:none;} }
 
     .pillBtn{
       border:1px solid rgba(17,17,17,.14);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.72);
       color: rgba(17,17,17,.88);
       padding:8px 12px;
       border-radius:999px;
@@ -136,17 +133,17 @@
       transition: transform .12s ease, background .18s ease, border-color .18s ease;
       white-space:nowrap;
     }
-    .pillBtn:hover{background:rgba(214,162,74,.10)}
+    .pillBtn:hover{background:rgba(214,162,74,.14)}
     .pillBtn:active{transform:scale(.98)}
     .pillBtn.active{
-      border-color: rgba(214,162,74,.55);
-      background: rgba(214,162,74,.22);
+      border-color: rgba(214,162,74,.60);
+      background: rgba(214,162,74,.26);
       color: var(--ink);
     }
 
     .cartBtn{
       border:1px solid rgba(17,17,17,.14);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.72);
       color: var(--ink);
       padding:10px 12px;
       border-radius:18px;
@@ -156,11 +153,11 @@
       transition: transform .12s ease, background .18s ease;
       white-space:nowrap;
     }
-    .cartBtn:hover{background:rgba(214,162,74,.10)}
+    .cartBtn:hover{background:rgba(214,162,74,.14)}
     .cartBtn:active{transform:scale(.98)}
     .badge{
       background: linear-gradient(135deg, var(--amber), var(--gold));
-      color: #111;
+      color:#111;
       font-weight:900;
       padding:2px 8px;
       border-radius:999px;
@@ -180,9 +177,10 @@
     h1{
       margin:0;
       font-family: Fraunces, ui-serif, Georgia, serif;
-      font-size:44px;
+      font-size:46px;
       letter-spacing:-.03em;
       line-height:1.04;
+      text-shadow: 0 1px 0 rgba(255,255,255,.25);
     }
     @media(max-width:640px){h1{font-size:34px}}
     .sub{
@@ -192,60 +190,54 @@
       max-width:760px;
       font-size:14.5px;
     }
-
     .titleRow{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap}
 
     /* Cards */
     .card{
-      background: var(--card);
-      border:1px solid var(--line);
+      background: var(--glass);
+      border:1px solid rgba(17,17,17,.12);
       border-radius: var(--r-xl);
       padding:20px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
     }
     .cardSoft{
-      background: var(--cardSoft);
-      border:1px solid var(--line);
+      background: var(--glassSoft);
+      border:1px solid rgba(17,17,17,.12);
       border-radius: var(--r-lg);
       padding:14px;
       box-shadow: var(--shadow2);
       transition: transform .18s ease, box-shadow .18s ease;
     }
-    .cardSoft:hover{
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-
-    .mini{font-size:12px; color:rgba(17,17,17,.64); font-weight:900; letter-spacing:.08em}
+    .cardSoft:hover{transform: translateY(-3px); box-shadow: var(--shadow);}
+    .mini{font-size:12px; color:rgba(17,17,17,.62); font-weight:900; letter-spacing:.08em}
     .h2{font-size:20px; font-weight:900; margin:10px 0 0}
     .p{color:var(--muted); font-size:14px; line-height:1.55; margin-top:10px}
-
-    .hr{height:1px; background:var(--line); margin:18px 0}
+    .hr{height:1px; background:rgba(17,17,17,.12); margin:18px 0}
 
     /* Hero */
     .hero{
       border-radius: var(--r-xl);
       border: 1px solid rgba(17,17,17,.10);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.84), rgba(246,239,225,.80)),
-        radial-gradient(700px 240px at 20% 0%, rgba(214,162,74,.14), transparent 55%),
-        radial-gradient(700px 240px at 90% 10%, rgba(127,168,141,.12), transparent 60%);
+      background: rgba(255,255,255,.70);
       box-shadow: var(--shadow);
       padding: 22px;
       position:relative;
       overflow:hidden;
+      backdrop-filter: blur(12px);
     }
     .hero::after{
       content:"";
-      position:absolute; inset:-40px;
+      position:absolute; inset:-30px;
       background:
-        radial-gradient(rgba(241,200,106,.25) 1px, transparent 2px) 0 0/70px 70px,
-        radial-gradient(rgba(127,168,141,.16) 1px, transparent 2px) 22px 16px/88px 88px;
-      opacity:.28;
-      transform: rotate(8deg);
+        radial-gradient(rgba(241,200,106,.22) 1px, transparent 2px) 0 0/80px 80px,
+        radial-gradient(rgba(127,168,141,.18) 1px, transparent 2px) 20px 16px/110px 110px;
+      opacity:.22;
+      transform: rotate(7deg);
       pointer-events:none;
     }
     .heroInner{position:relative; z-index:1}
+
     .heroTag{
       display:inline-flex;
       gap:8px;
@@ -253,11 +245,11 @@
       padding:8px 12px;
       border-radius:999px;
       border:1px solid rgba(17,17,17,.12);
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.68);
       font-size:12px;
       font-weight:900;
       color: rgba(17,17,17,.86);
-      box-shadow: 0 8px 20px rgba(20,30,25,.06);
+      box-shadow: 0 8px 18px rgba(12,20,16,.08);
     }
     .dot{width:8px;height:8px;border-radius:99px;background: var(--sage)}
     .spark{width:8px;height:8px;border-radius:99px;background: var(--gold); box-shadow:0 0 0 4px rgba(241,200,106,.20)}
@@ -274,7 +266,7 @@
       padding:11px 14px;
       border-radius:18px;
       cursor:pointer;
-      box-shadow: 0 10px 22px rgba(214,162,74,.18);
+      box-shadow: 0 10px 22px rgba(214,162,74,.22);
       transition: transform .12s ease, filter .12s ease;
     }
     .btn:hover{filter:brightness(1.03)}
@@ -282,7 +274,7 @@
 
     .btnGhost{
       border:1px solid rgba(17,17,17,.14);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.70);
       color: var(--ink);
       padding:11px 14px;
       border-radius:18px;
@@ -290,25 +282,26 @@
       font-weight:900;
       transition: transform .12s ease, background .18s ease;
     }
-    .btnGhost:hover{background:rgba(214,162,74,.10)}
+    .btnGhost:hover{background:rgba(214,162,74,.14)}
     .btnGhost:active{transform:scale(.98)}
 
     /* Chips */
     .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
     .chip{
       border:1px solid rgba(17,17,17,.12);
-      background: rgba(214,162,74,.10);
+      background: rgba(255,255,255,.62);
       color: rgba(17,17,17,.86);
       padding:6px 10px;
       border-radius:999px;
       font-size:12px;
       font-weight:700;
+      backdrop-filter: blur(6px);
     }
 
     /* Forms */
     input,select,textarea{
       width:100%;
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.88);
       color: var(--ink);
       border:1px solid rgba(17,17,17,.14);
       border-radius: var(--r-md);
@@ -323,7 +316,7 @@
       box-shadow: 0 0 0 4px rgba(214,162,74,.18);
     }
 
-    /* Products grid */
+    /* Products */
     .products{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
     @media(max-width:980px){.products{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:640px){.products{grid-template-columns:1fr}}
@@ -332,7 +325,7 @@
     .sizeBtn{
       display:flex; align-items:center; justify-content:space-between;
       border:1px solid rgba(17,17,17,.14);
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.86);
       border-radius:18px;
       padding:10px 12px;
       cursor:pointer;
@@ -341,7 +334,7 @@
       font-weight:800;
       transition: transform .12s ease, background .18s ease;
     }
-    .sizeBtn:hover{background:rgba(214,162,74,.10)}
+    .sizeBtn:hover{background:rgba(214,162,74,.14)}
     .sizeBtn:active{transform:scale(.99)}
     .gold{color:var(--amber); font-weight:900}
 
@@ -355,6 +348,7 @@
       margin-top:12px;
       color: var(--ink);
       font-weight:700;
+      backdrop-filter: blur(8px);
     }
     .noticeMystic{
       border:1px solid rgba(107,90,122,.35);
@@ -363,10 +357,11 @@
 
     /* Footer */
     footer{
-      border-top:1px solid var(--line);
+      border-top:1px solid rgba(255,255,255,.35);
       padding:28px 0;
       margin-top:22px;
-      background: rgba(246,239,225,.60);
+      background: rgba(255,255,255,.52);
+      backdrop-filter: blur(12px);
     }
     .footGrid{display:grid; gap:16px; grid-template-columns:1.2fr 1fr 1fr}
     @media(max-width:900px){.footGrid{grid-template-columns:1fr}}
@@ -406,7 +401,7 @@
       <div>
         <div style="font-family:Fraunces, ui-serif, Georgia, serif; font-weight:700; font-size:18px;">JahVee’s</div>
         <div style="opacity:.75;font-size:13px;margin-top:2px;">Beauty, Botanicals, & Beyond</div>
-        <div class="p" style="margin-top:10px">Soft spa-level calm with apothecary soul — custom blends made from your real inventory.</div>
+        <div class="p" style="margin-top:10px">Spa-calm + apothecary soul — custom blends made from your real herbal inventory.</div>
       </div>
       <div>
         <div style="font-weight:900;">Explore</div>
@@ -502,9 +497,9 @@
     ["contact","Contact"],
   ];
 
-  const $page = document.getElementById("page");
-  const $nav  = document.getElementById("nav");
-  const $count= document.getElementById("cartCount");
+  const $page  = document.getElementById("page");
+  const $nav   = document.getElementById("nav");
+  const $count = document.getElementById("cartCount");
 
   let cart = [];
   const state = { shopCat:"All", shopQ:"" };
@@ -587,11 +582,7 @@
     return `
       <div class="hero">
         <div class="heroInner">
-          <div class="heroTag">
-            <span class="dot"></span>
-            spa-calm + apothecary magic
-            <span class="spark"></span>
-          </div>
+          <div class="heroTag"><span class="dot"></span> spa-calm + apothecary magic <span class="spark"></span></div>
 
           <div class="titleRow" style="margin-top:14px">
             <div>
@@ -706,7 +697,7 @@
 
         <div class="chips">
           <span class="chip">${b.taste}</span>
-          ${b.category.includes("Mystic") ? `<span class="chip" style="background:rgba(107,90,122,.12)">Mystic</span>` : ``}
+          ${b.category.includes("Mystic") ? `<span class="chip" style="border-color:rgba(107,90,122,.25); background:rgba(255,255,255,.55)">Mystic</span>` : ``}
         </div>
 
         <div class="chips">${b.ingredients.slice(0,4).map(i=>`<span class="chip">${i}</span>`).join("")}</div>
