@@ -190,8 +190,30 @@
       max-width:760px;
       font-size:14.5px;
     }
-    .titleRow{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap}
+    .titleRow{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
 
+  /* NEW: makes the title readable on the forest background */
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(17,17,17,.12);
+  border-radius: 22px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow2);
+  backdrop-filter: blur(10px);
+}
+
+.titleRow h1{
+  color:#000;        /* darker black */
+  text-shadow:none;  /* remove haze */
+}
+
+.titleRow .sub{
+  color: rgba(0,0,0,.82);
+}
     /* Cards */
     .card{
       background: var(--glass);
